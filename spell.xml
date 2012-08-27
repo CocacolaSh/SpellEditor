@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40"
+ xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Created>2006-09-13T11:21:51Z</Created>
+  <LastSaved>2012-08-23T02:13:37Z</LastSaved>
+  <Version>12.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <RemovePersonalInformation/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11640</WindowHeight>
+  <WindowWidth>19200</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>90</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+  <FutureVer>11</FutureVer>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s16">
+   <NumberFormat ss:Format="@"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table ss:ExpandedColumnCount="66" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="94.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="92.25"/>
+   <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="87.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:Index="15" ss:AutoFitWidth="0" ss:Width="63"/>
+   <Column ss:Index="17" ss:AutoFitWidth="0" ss:Width="97.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90.75"/>
+   <Column ss:Index="20" ss:AutoFitWidth="0" ss:Width="95.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="74.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69"/>
+   <Column ss:Index="25" ss:AutoFitWidth="0" ss:Width="62.25"/>
+   <Column ss:Index="27" ss:AutoFitWidth="0" ss:Width="69"/>
+   <Column ss:AutoFitWidth="0" ss:Width="72"/>
+   <Column ss:AutoFitWidth="0" ss:Width="63"/>
+   <Column ss:Index="40" ss:AutoFitWidth="0" ss:Width="71.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="72.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.75" ss:Span="1"/>
+   <Column ss:Index="45" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="71.25" ss:Span="1"/>
+   <Column ss:Index="49" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:Index="66" ss:AutoFitWidth="0" ss:Width="127.5"/>
+   <Row>
+    <Cell><Data ss:Type="String">ID</Data></Cell>
+    <Cell><Data ss:Type="String">SkillID</Data></Cell>
+    <Cell><Data ss:Type="String">SkillName</Data></Cell>
+    <Cell><Data ss:Type="String">SkillIcon</Data></Cell>
+    <Cell><Data ss:Type="String">SkillDescription</Data></Cell>
+    <Cell><Data ss:Type="String">SkillLevel</Data></Cell>
+    <Cell><Data ss:Type="String">MountType</Data></Cell>
+    <Cell><Data ss:Type="String">SeqAfterLearn</Data></Cell>
+    <Cell><Data ss:Type="String">SeqAfterEquip</Data></Cell>
+    <Cell><Data ss:Type="String">LoopFx</Data></Cell>
+    <Cell><Data ss:Type="String">ChiLevel</Data></Cell>
+    <Cell><Data ss:Type="String">IsElite</Data></Cell>
+    <Cell><Data ss:Type="String">IsEmblem</Data></Cell>
+    <Cell><Data ss:Type="String">IsIgnoreHard</Data></Cell>
+    <Cell><Data ss:Type="String">SkillPattern</Data></Cell>
+    <Cell><Data ss:Type="String">SkillBaseType</Data></Cell>
+    <Cell><Data ss:Type="String">RequireNotInCommonState</Data></Cell>
+    <Cell><Data ss:Type="String">RequireMoveCheck</Data></Cell>
+    <Cell><Data ss:Type="String">RequireSeq</Data></Cell>
+    <Cell><Data ss:Type="String">CostPercentMP</Data></Cell>
+    <Cell><Data ss:Type="String">CostPercentHP</Data></Cell>
+    <Cell><Data ss:Type="String">CostItemID</Data></Cell>
+    <Cell><Data ss:Type="String">CostItemNum</Data></Cell>
+    <Cell><Data ss:Type="String">CoolDownTime</Data></Cell>
+    <Cell><Data ss:Type="String">CoolDownGroup</Data></Cell>
+    <Cell><Data ss:Type="String">CategoryType</Data></Cell>
+    <Cell><Data ss:Type="String">CategoryVariable</Data></Cell>
+    <Cell><Data ss:Type="String">IsAutoFaceTarget</Data></Cell>
+    <Cell><Data ss:Type="String">CastTime</Data></Cell>
+    <Cell><Data ss:Type="String">CastTake</Data></Cell>
+    <Cell><Data ss:Type="String">CastEnhancement</Data></Cell>
+    <Cell><Data ss:Type="String">CastArmor</Data></Cell>
+    <Cell><Data ss:Type="String">AttackTime</Data></Cell>
+    <Cell><Data ss:Type="String">AttackSTake</Data></Cell>
+    <Cell><Data ss:Type="String">AttackTargetType</Data></Cell>
+    <Cell><Data ss:Type="String">AttackEnhancement</Data></Cell>
+    <Cell><Data ss:Type="String">FloatingTimeStart</Data></Cell>
+    <Cell><Data ss:Type="String">FloatTimeSpan</Data></Cell>
+    <Cell><Data ss:Type="String">AttackEventTime</Data></Cell>
+    <Cell><Data ss:Type="String">AttackEvent</Data></Cell>
+    <Cell><Data ss:Type="String">SpurtStartTime</Data></Cell>
+    <Cell><Data ss:Type="String">SpurtTimeSpan</Data></Cell>
+    <Cell><Data ss:Type="String">SpurtDistanceX</Data></Cell>
+    <Cell><Data ss:Type="String">SpurtDistanceY</Data></Cell>
+    <Cell><Data ss:Type="String">SpurtDistanceZ</Data></Cell>
+    <Cell><Data ss:Type="String">SpurtNoStepDown</Data></Cell>
+    <Cell><Data ss:Type="String">FireTime</Data></Cell>
+    <Cell><Data ss:Type="String">FireType</Data></Cell>
+    <Cell><Data ss:Type="String">sFireMissileID</Data></Cell>
+    <Cell><Data ss:Type="String">AttackBoxGroupID1</Data></Cell>
+    <Cell><Data ss:Type="String">HitSeq1</Data></Cell>
+    <Cell><Data ss:Type="String">HitBreakArmor1</Data></Cell>
+    <Cell><Data ss:Type="String">HitAttackInfo1</Data></Cell>
+    <Cell><Data ss:Type="String">AttackBox2</Data></Cell>
+    <Cell><Data ss:Type="String">HitSeq2</Data></Cell>
+    <Cell><Data ss:Type="String">HitBreakArmor2</Data></Cell>
+    <Cell><Data ss:Type="String">HitAttackInfo2</Data></Cell>
+    <Cell><Data ss:Type="String">AttackBox3</Data></Cell>
+    <Cell><Data ss:Type="String">HitSeq3</Data></Cell>
+    <Cell><Data ss:Type="String">HitBreakArmor3</Data></Cell>
+    <Cell><Data ss:Type="String">HitAttackInfo3</Data></Cell>
+    <Cell><Data ss:Type="String">CloseAttackTime</Data></Cell>
+    <Cell><Data ss:Type="String">CloseAttackSTake</Data></Cell>
+    <Cell><Data ss:Type="String">seAttackEnhancement</Data></Cell>
+    <Cell><Data ss:Type="String">CloseAttackEventTime</Data></Cell>
+    <Cell><Data ss:Type="String">CloseAttackEvent</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ID</Data></Cell>
+    <Cell><Data ss:Type="String">技能ID</Data></Cell>
+    <Cell><Data ss:Type="String">技能名称</Data></Cell>
+    <Cell><Data ss:Type="String">图标</Data></Cell>
+    <Cell ss:StyleID="s16"><Data ss:Type="String">描述</Data></Cell>
+    <Cell><Data ss:Type="String">技能等级</Data></Cell>
+    <Cell><Data ss:Type="String">应用场景</Data></Cell>
+    <Cell><Data ss:Type="String">学习后调用</Data></Cell>
+    <Cell><Data ss:Type="String">装备后调用序列</Data></Cell>
+    <Cell><Data ss:Type="String">装备后特效</Data></Cell>
+    <Cell><Data ss:Type="String">蓄力等级</Data></Cell>
+    <Cell><Data ss:Type="String">是否精英技能</Data></Cell>
+    <Cell><Data ss:Type="String">纹章技能</Data></Cell>
+    <Cell><Data ss:Type="String">忽略硬直</Data></Cell>
+    <Cell><Data ss:Type="String">技能归属类</Data></Cell>
+    <Cell><Data ss:Type="String">魔法分类[普攻/魔法]</Data></Cell>
+    <Cell><Data ss:Type="String">使用者未处于公共状态检查</Data></Cell>
+    <Cell><Data ss:Type="String">移动状态检查</Data></Cell>
+    <Cell><Data ss:Type="String">使用者其它限制</Data></Cell>
+    <Cell><Data ss:Type="String">消耗魔法值百分比</Data></Cell>
+    <Cell><Data ss:Type="String">消耗生命值百分比</Data></Cell>
+    <Cell><Data ss:Type="String">消耗物品ID</Data></Cell>
+    <Cell><Data ss:Type="String">消耗数量</Data></Cell>
+    <Cell><Data ss:Type="String">冷却时间</Data></Cell>
+    <Cell><Data ss:Type="String">冷却时间组</Data></Cell>
+    <Cell><Data ss:Type="String">作用类型</Data></Cell>
+    <Cell><Data ss:Type="String">作用类型需求变量</Data></Cell>
+    <Cell><Data ss:Type="String">自动转向</Data></Cell>
+    <Cell><Data ss:Type="String">准备时间</Data></Cell>
+    <Cell><Data ss:Type="String">准备动作</Data></Cell>
+    <Cell><Data ss:Type="String">准备加持</Data></Cell>
+    <Cell><Data ss:Type="String">霸体值</Data></Cell>
+    <Cell><Data ss:Type="String">攻击时间</Data></Cell>
+    <Cell><Data ss:Type="String">攻击动作</Data></Cell>
+    <Cell><Data ss:Type="String">攻击目标类型</Data></Cell>
+    <Cell><Data ss:Type="String">攻击加成</Data></Cell>
+    <Cell><Data ss:Type="String">滞空时间开始点</Data></Cell>
+    <Cell><Data ss:Type="String">滞空时间</Data></Cell>
+    <Cell><Data ss:Type="String">攻击特殊作用时间</Data></Cell>
+    <Cell><Data ss:Type="String">攻击特殊作用</Data></Cell>
+    <Cell><Data ss:Type="String">特殊位移时间</Data></Cell>
+    <Cell><Data ss:Type="String">特殊位移时间</Data></Cell>
+    <Cell><Data ss:Type="String">特殊位移距离X</Data></Cell>
+    <Cell><Data ss:Type="String">特殊位移距离Y</Data></Cell>
+    <Cell><Data ss:Type="String">特殊位移距离Z</Data></Cell>
+    <Cell><Data ss:Type="String">不贴地处理</Data></Cell>
+    <Cell><Data ss:Type="String">发射物件时间</Data></Cell>
+    <Cell><Data ss:Type="String">发射物件类型</Data></Cell>
+    <Cell><Data ss:Type="String">发射物件ID</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞盒组ID1</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞序列1</Data></Cell>
+    <Cell><Data ss:Type="String">破敌值1</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞info1</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞盒组ID2</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞序列2</Data></Cell>
+    <Cell><Data ss:Type="String">破敌值2</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞info2</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞盒组ID3</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞序列3</Data></Cell>
+    <Cell><Data ss:Type="String">破敌值3</Data></Cell>
+    <Cell><Data ss:Type="String">碰撞info3</Data></Cell>
+    <Cell><Data ss:Type="String">收招时间</Data></Cell>
+    <Cell><Data ss:Type="String">收招动作</Data></Cell>
+    <Cell><Data ss:Type="String">收招加持</Data></Cell>
+    <Cell><Data ss:Type="String">收招特殊作用时间</Data></Cell>
+    <Cell><Data ss:Type="String">收招特殊作用段</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">11</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">21</Data></Cell>
+    <Cell><Data ss:Type="Number">22</Data></Cell>
+    <Cell><Data ss:Type="Number">23</Data></Cell>
+    <Cell><Data ss:Type="Number">24</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+    <Cell><Data ss:Type="Number">26</Data></Cell>
+    <Cell><Data ss:Type="Number">27</Data></Cell>
+    <Cell><Data ss:Type="Number">28</Data></Cell>
+    <Cell><Data ss:Type="Number">29</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">31</Data></Cell>
+    <Cell><Data ss:Type="Number">32</Data></Cell>
+    <Cell><Data ss:Type="Number">33</Data></Cell>
+    <Cell><Data ss:Type="Number">34</Data></Cell>
+    <Cell><Data ss:Type="Number">35</Data></Cell>
+    <Cell><Data ss:Type="Number">36</Data></Cell>
+    <Cell><Data ss:Type="Number">37</Data></Cell>
+    <Cell><Data ss:Type="Number">38</Data></Cell>
+    <Cell><Data ss:Type="Number">39</Data></Cell>
+    <Cell><Data ss:Type="Number">40</Data></Cell>
+    <Cell><Data ss:Type="Number">41</Data></Cell>
+    <Cell><Data ss:Type="Number">42</Data></Cell>
+    <Cell><Data ss:Type="Number">43</Data></Cell>
+    <Cell><Data ss:Type="Number">44</Data></Cell>
+    <Cell><Data ss:Type="Number">45</Data></Cell>
+    <Cell><Data ss:Type="Number">46</Data></Cell>
+    <Cell><Data ss:Type="Number">47</Data></Cell>
+    <Cell><Data ss:Type="Number">48</Data></Cell>
+    <Cell><Data ss:Type="Number">49</Data></Cell>
+    <Cell><Data ss:Type="Number">50</Data></Cell>
+    <Cell><Data ss:Type="Number">51</Data></Cell>
+    <Cell><Data ss:Type="Number">52</Data></Cell>
+    <Cell><Data ss:Type="Number">53</Data></Cell>
+    <Cell><Data ss:Type="Number">54</Data></Cell>
+    <Cell><Data ss:Type="Number">55</Data></Cell>
+    <Cell><Data ss:Type="Number">56</Data></Cell>
+    <Cell><Data ss:Type="Number">57</Data></Cell>
+    <Cell><Data ss:Type="Number">58</Data></Cell>
+    <Cell><Data ss:Type="Number">59</Data></Cell>
+    <Cell><Data ss:Type="Number">60</Data></Cell>
+    <Cell><Data ss:Type="Number">61</Data></Cell>
+    <Cell><Data ss:Type="Number">62</Data></Cell>
+    <Cell><Data ss:Type="Number">63</Data></Cell>
+    <Cell><Data ss:Type="Number">64</Data></Cell>
+    <Cell><Data ss:Type="Number">65</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">10010</Data></Cell>
+    <Cell><Data ss:Type="Number">10010</Data></Cell>
+   </Row>
+   <Row ss:Index="7">
+    <Cell ss:Index="3" ss:StyleID="s16"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>200</HorizontalResolution>
+    <VerticalResolution>200</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>23</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet2">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>200</HorizontalResolution>
+    <VerticalResolution>200</VerticalResolution>
+   </Print>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet3">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>200</HorizontalResolution>
+    <VerticalResolution>200</VerticalResolution>
+   </Print>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <x2:MapInfo x2:HideInactiveListBorder="false">
+  <x2:Schema x2:ID="Schema1" x2:Namespace=""><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=""><xsd:element nillable="true" name="alldata"><xsd:complexType><xsd:sequence minOccurs="0"><xsd:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="metadata" form="unqualified"><xsd:complexType><xsd:sequence minOccurs="0"><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="ID" form="unqualified"></xsd:element><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="SkillID" form="unqualified"></xsd:element><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="SkillName" form="unqualified"></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>
+  </x2:Schema>
+  <x2:Map x2:ID="alldata_映射" x2:SchemaID="Schema1" x2:RootElement="alldata">
+  </x2:Map>
+ </x2:MapInfo>
+ <x2:Binding x2:ID="Binding1" x2:LoadMode="normal">
+  <x2:MapID>alldata_映射</x2:MapID>
+<udc:DataSource MajorVersion="1" MinorVersion="0" xmlns:udc="http://schemas.microsoft.com/data/udc">
+  <udc:Type Type="XMLFile" MajorVersion="1" MinorVersion="0"/>
+  <udc:Name>Binding1</udc:Name>
+  <udc:ConnectionInfo Purpose="Query">
+    <udcxf:File xmlns:udcxf="http://schemas.microsoft.com/data/udc/xmlfile">C:\Documents and Settings\user\桌面\新建 文本文档.txt</udcxf:File>
+  </udc:ConnectionInfo>
+</udc:DataSource>
+ </x2:Binding>
+</Workbook>
