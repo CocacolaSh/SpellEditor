@@ -249,6 +249,10 @@
 		<Filter
 			Name="logic"
 			>
+			<File
+				RelativePath=".\logic\attr\CCharacterEntity.h"
+				>
+			</File>
 			<Filter
 				Name="skill"
 				>
@@ -274,6 +278,14 @@
 				</File>
 				<File
 					RelativePath=".\logic\skill\CEot.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CModifyMgr.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CModifyMgr.h"
 					>
 				</File>
 				<File

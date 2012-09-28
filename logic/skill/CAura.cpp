@@ -1,5 +1,11 @@
 #include "CAura.h"
 #include "../attr/EntityFunc.h"
+#include "../skill/aura_template.h"
+#include "../attr/CCharacterEntity.h"
+#include "../attr/ModifierFunc.h"
+#include "CPrdEftList.h"
+#include <cmath>
+#include <algorithm>
 
 namespace SKILLEDITOR
 {
@@ -11,14 +17,15 @@ namespace SKILLEDITOR
 	}
 	CAura::~CAura(){}
 
-	BSLib::s32	CAura::getID(){return m_auraTemplate->m_data.getID();}
+	BSLib::s32	CAura::getID()
+	{
+		return m_auraTemplate->m_data.getID();
+	}
 
 	BSLib::s32	CAura::getLevel()
 	{
 		return m_auraTemplate->m_data.getLevel();
 	}
-
-	EPeriodEffectType 	CAura::getType(){return EPERIOD_EFFECT_TYPE_AURA;}
 
 	EPeriodEffectNature	CAura::getNature()
 	{
@@ -63,7 +70,7 @@ namespace SKILLEDITOR
 
 		BSLib::s32 keyIndex = EGCAF_ATTRIBUTEA + attrDelta;
 
-		TGetAttr get_attr = GetAttrFunc(amtChar, keyIndex);
+		TGetAttr get_attr = GetAttrFunc(EATTR_MODIFY_TYPE_CHAR, keyIndex);
 		if (get_attr == NULL)
 		{
 			return false;
@@ -75,14 +82,14 @@ namespace SKILLEDITOR
 			if(attrValue >= powerUpper)
 				return false;
 
-			m_powerAdded = min(attrValue + powerToAdd, powerUpper) - attrValue;
+			m_powerAdded = std::min(attrValue + powerToAdd, powerUpper) - attrValue;
 		}else
 		{
 			if (attrValue <= powerUpper)
 			{
 				return false;
 			}
-			m_powerAdded = max(attrValue + powerToAdd, powerUpper) - attrValue;
+			m_powerAdded = std::max(attrValue + powerToAdd, powerUpper) - attrValue;
 		}
 		return list->addAura(this, src, dst);
 	}
@@ -90,11 +97,13 @@ namespace SKILLEDITOR
 	void CAura::onAppend(CCharacterEntity *src, CCharacterEntity *dst)
 	{
 		BSLib::s32 attrID = m_auraTemplate->m_data.m_targetAttrID;
+
+		//A,B,C,D,EÐÞ¸ÄÊôÐÔµÄABCDE
 		BSLib::s32 attrDelta = m_auraTemplate->m_data.m_targetAttrType;
 
-		BSLib::s32 keyIndex = EMAKCHAR_ChangeAttributeA + attrDelta;
+		BSLib::s32 keyIndex = EAMKCHAR_ChangeAttributeA + attrDelta;
 
-		TAttrModifierFunc func = GetModifierFunc(EAMT_CHAR, keyIndex);
+		TAttrModifierFunc func = GetModifierFunc(EATTR_MODIFY_TYPE_CHAR, keyIndex);
 		if (func)
 		{
 			if ( !func(src, dst, keyIndex, attrID, m_powerAdded, 0))
@@ -126,12 +135,12 @@ namespace SKILLEDITOR
 		BSLib::s32 attrID = m_auraTemplate->m_data.m_targetAttrID;
 		BSLib::s32 attrDelta = m_auraTemplate->m_data.m_targetAttrType;
 
-		BSLib::s32 keyIndex = EMAKCHAR_ChangeAttributeA + attrDelta;
+		BSLib::s32 keyIndex = EAMKCHAR_ChangeAttributeA + attrDelta;
 
-		TAttrModifierFunc func = GetModifierFunc(EAMT_CHAR, keyIndex);
+		TAttrModifierFunc func = GetModifierFunc(EATTR_MODIFY_TYPE_CHAR, keyIndex);
 		if (func)
 		{
-			if ( !func(src, dst, keyIndex, attrID, m_powerAdded, 0))
+			if ( !func(NULL, dst, keyIndex, attrID, m_powerAdded, 0))
 			{
 				assert(0);
 			}

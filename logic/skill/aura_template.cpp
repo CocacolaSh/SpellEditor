@@ -7,7 +7,7 @@ namespace SKILLEDITOR
 
 	BSLib::s32 AuraEntry::getID(){return m_id;}
 	BSLib::s32 AuraEntry::getLevel(){return m_level;}
-	bool AuraEntry::isGood(){return m_isGood != 0}
+	bool AuraEntry::isGood(){return m_isGood != 0;}
 	bool AuraEntry::isUndispeled(){return m_isUnDispeled != 0;}
 
 	void AuraEntry::reset()

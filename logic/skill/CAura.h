@@ -3,6 +3,7 @@
 #include "CPeriodEffect.h"
 namespace SKILLEDITOR
 {
+	class AuraTemplate;
 	class CAura: public CPeriodEffect
 	{
 	public:
@@ -24,7 +25,7 @@ namespace SKILLEDITOR
 		void setupDuration(BSLib::s32 d);
 		void modifyMe();
 		void copyTemplate(AuraTemplate *t);
-		AuraTemplate *getInfo(){return m_auraTemplate;}
+		AuraTemplate * getInfo(){return m_auraTemplate;}
 	private:
 		AuraTemplate *	m_auraTemplate;
 		BSLib::s32      m_powerAdded;

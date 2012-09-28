@@ -1,6 +1,6 @@
 #ifndef __SPELL_EDITOR_BASEDEF_H__
 #define __SPELL_EDITOR_BASEDEF_H__
-
+#include <assert.h>
 namespace BSLib
 {
 #ifdef _MSC_VER
