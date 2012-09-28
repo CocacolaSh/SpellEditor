@@ -87,6 +87,7 @@ CMainFrame::CMainFrame(const wxString& title)
 	//this->SetSize(ClientRect);
 
 	m_panel = new wxPanel(this);
+	initPanel();
 
 	wxMenu *fileMenu = new wxMenu();
 	wxMenu *helpMenu = new wxMenu();
@@ -103,8 +104,4 @@ CMainFrame::CMainFrame(const wxString& title)
 
 	CreateStatusBar(2);
 	SetStatusText(wxT("Welcome to use spelleditor!"));
-
-	initPanel();
-
-
 }
