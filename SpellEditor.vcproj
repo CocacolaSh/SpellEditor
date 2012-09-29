@@ -249,10 +249,6 @@
 		<Filter
 			Name="logic"
 			>
-			<File
-				RelativePath=".\logic\attr\CCharacterEntity.h"
-				>
-			</File>
 			<Filter
 				Name="skill"
 				>
@@ -329,7 +325,59 @@
 				Name="attr"
 				>
 				<File
+					RelativePath=".\logic\attr\attrFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\attrFunc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\auraFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\auraFunc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\CCharacterEntity.h"
+					>
+				</File>
+				<File
 					RelativePath=".\logic\attr\EntityFunc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierAura.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierAura.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierBullet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierBullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierChar.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierChar.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierEot.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierEot.h"
 					>
 				</File>
 				<File
@@ -338,6 +386,14 @@
 				</File>
 				<File
 					RelativePath=".\logic\attr\ModifierFunc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierSkill.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\ModifierSkill.h"
 					>
 				</File>
 			</Filter>

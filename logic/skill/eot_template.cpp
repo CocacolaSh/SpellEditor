@@ -7,7 +7,7 @@ namespace SKILLEDITOR
 
 	BSLib::s32 EotEntry::getID(){return m_id;}
 	BSLib::s32 EotEntry::getLevel(){return m_level;}
-	bool EotEntry::isGood(){return m_isHot != 0}
+	bool EotEntry::isGood(){return m_isHot != 0;}
 	bool EotEntry::isUndispeled(){return true;}
 
 	void EotEntry::reset()

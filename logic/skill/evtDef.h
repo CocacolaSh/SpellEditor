@@ -1,6 +1,6 @@
 #ifndef __LOGIC_SKILL_EVTDEF_H__
 #define __LOGIC_SKILL_EVTDEF_H__
-
+#include "basedef.h"
 namespace SKILLEDITOR
 {
 #define MAX_SEQ 8
@@ -29,5 +29,11 @@ namespace SKILLEDITOR
 		EATTR_MODIFY_TYPE_EOT,
 		EATTR_MODIFY_TYPE_COUNT
 	};
+
+	inline void SplitSeqKey(BSLib::s32 key, BSLib::s32 &type, BSLib::s32 &idx)
+	{
+		type = (key & 0x0f000000) >> 24;
+		idx = key & 0x00ffffff;
+	}
 }
 #endif

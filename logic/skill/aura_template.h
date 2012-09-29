@@ -7,8 +7,9 @@
 #include <map>
 namespace SKILLEDITOR
 {
-	struct AuraTemplate
+	class AuraTemplate
 	{
+	public:
 		AuraTemplate()
 		{
 			m_iscpy = false;

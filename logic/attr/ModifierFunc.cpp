@@ -1,14 +1,21 @@
 #include "ModifierFunc.h"
 #include "EntityFunc.h"
 #include "../../Process_error.h"
-#include "evtDef.h"
+#include "../skill/evtDef.h"
+#include "ModifierEot.h"
+#include "ModifierSkill.h"
+#include "ModifierChar.h"
+#include "ModifierSkill.h"
+#include "ModifierBullet.h"
+#include "ModifierAura.h"
+//#include ""
 
 namespace SKILLEDITOR
 {
 	extern TAttrModifierFunc AttrCharModifierFunc[EAMKCHAR_Count];
-	extern TAttrModifierFunc AttrSkillModifierFunc[EAMKSKILL_Count];
+	extern TAttrModifierFunc AttrSkillModifierFunc[EAMKSkill_Count];
 	extern TAttrModifierFunc AttrBullectModifierFunc[EAMKBullet_Count];
-	extern TAttrModifierFunc AttrEotModifierFunc[EAMKEot_Count];
+	extern TAttrModifierFunc AttrEotModifierFunc[EAMKEOT_Count];
 	extern TAttrModifierFunc AttrAuraModifierFunc[EAMKAura_Count];
 
 	TAttrModifierFunc *AttrModifiers[EATTR_MODIFY_TYPE_COUNT] = 
@@ -27,7 +34,7 @@ namespace SKILLEDITOR
 
 	TAttrModifierFunc GetModifierFunc(BSLib::s32 funcType, BSLib::s32 key)
 	{
-		TAttrModifierFunc func = NULL;
+		TAttrModifierFunc func;
 
 		LOG_PROCESS_ERROR(funcType >= 0 || funcType < EATTR_MODIFY_TYPE_COUNT);
 

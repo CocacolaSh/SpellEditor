@@ -3,7 +3,10 @@
 #include "../skill/aura_template.h"
 #include "../attr/CCharacterEntity.h"
 #include "../attr/ModifierFunc.h"
+#include "../attr/ModifierChar.h"
 #include "CPrdEftList.h"
+#include "CModifyMgr.h"
+#include "../attr/attrFunc.h"
 #include <cmath>
 #include <algorithm>
 
@@ -118,7 +121,7 @@ namespace SKILLEDITOR
 
 		for (BSLib::u32 i = 0; i < MAX_SEQ; ++i)
 		{
-			CGlobalModifier::GetInstance()->ApplySeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONAPPEND][i], NULL, amtChar, dst);
+			sModifierMgr.applySeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONAPPEND][i], NULL, EATTR_MODIFY_TYPE_CHAR, dst);
 		}
 		m_leftTime = m_timeTemplateSpan = m_auraTemplate->m_data.m_fixTime / 1000.f;
 		CPeriodEffect::onAppend(src, dst);
@@ -129,8 +132,8 @@ namespace SKILLEDITOR
 
 		for (BSLib::u32 i = 0; i < MAX_SEQ; ++i)
 		{
-			CGlobalModifier::GetInstance()->ApplySeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONREMOVE][i], NULL, amtChar, dst);
-			CGlobalModifier::GetInstance()->RollbackSeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONAPPEND][i], NULL, amtChar, dst);
+			sModifierMgr.applySeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONREMOVE][i], NULL, EATTR_MODIFY_TYPE_CHAR, dst);
+			sModifierMgr.rollbackSeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONAPPEND][i], NULL, EATTR_MODIFY_TYPE_CHAR, dst);
 		}
 		BSLib::s32 attrID = m_auraTemplate->m_data.m_targetAttrID;
 		BSLib::s32 attrDelta = m_auraTemplate->m_data.m_targetAttrType;
