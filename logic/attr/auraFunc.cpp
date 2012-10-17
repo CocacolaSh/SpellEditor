@@ -1,27 +1,30 @@
 #include "basedef.h"
-#include "auraFunc.h"
+#include "AuraFunc.h"
 #include "attrFunc.h"
-class IFighter;
+#include "../skill/aura_template.h"
+
 namespace SKILLEDITOR
 {
-	BSLib::s32 GetAuraIsGood(IFighter *target, BSLib::s32 arg)
+	BSLib::s32 GetAuraIsGood(void *target, BSLib::s32 arg)
+	{
+		AuraTemplate *aura = (AuraTemplate*)target;
+		return aura->m_data.m_isGood;
+	}
+	BSLib::s32 GetAuraType(void *target, BSLib::s32 arg)
 	{
 		return 0;
 	}
-	BSLib::s32 GetAuraType(IFighter *target, BSLib::s32 arg)
+	BSLib::s32 GetAuraResult(void *target, BSLib::s32 arg)
 	{
 		return 0;
 	}
-	BSLib::s32 GetAuraResult(IFighter *target, BSLib::s32 arg)
+	BSLib::s32 GetAuraFixTime(void *target, BSLib::s32 arg)
 	{
-		return 0;
-	}
-	BSLib::s32 GetAuraFixTime(IFighter *target, BSLib::s32 arg)
-	{
-		return 0;
+		AuraTemplate *aura = (AuraTemplate*)target;
+		return aura->m_data.m_fixTime;
 	}
 
-	TGetAttr GetAttrAuraFunc[EGAFAura_COUNT] = 
+	TGetAttr GetAuraAttrFunc[EGetAuraAttrFunc_COUNT] = 
 	{
 		NULL,
 		GetAuraIsGood,

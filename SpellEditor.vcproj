@@ -273,6 +273,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\logic\skill\CEot.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\logic\skill\CEot.h"
 					>
 				</File>
@@ -298,6 +302,14 @@
 				</File>
 				<File
 					RelativePath=".\logic\skill\CPrdEftList.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CSkillEvt.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CSkillEvt.h"
 					>
 				</File>
 				<File
@@ -333,11 +345,31 @@
 					>
 				</File>
 				<File
-					RelativePath=".\logic\attr\auraFunc.cpp"
+					RelativePath=".\logic\attr\attrList.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\logic\attr\auraFunc.h"
+					RelativePath=".\logic\attr\attrList.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\attrTypes.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\AuraFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\AuraFunc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\BulletFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\BulletFunc.h"
 					>
 				</File>
 				<File
@@ -345,7 +377,19 @@
 					>
 				</File>
 				<File
+					RelativePath=".\logic\attr\EntityFunc.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\logic\attr\EntityFunc.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\EotFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\EotFunc.h"
 					>
 				</File>
 				<File
@@ -394,6 +438,14 @@
 				</File>
 				<File
 					RelativePath=".\logic\attr\ModifierSkill.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\SkillFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\SkillFunc.h"
 					>
 				</File>
 			</Filter>

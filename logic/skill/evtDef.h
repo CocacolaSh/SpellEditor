@@ -6,28 +6,29 @@ namespace SKILLEDITOR
 #define MAX_SEQ 8
 	enum EModifierOnAuraApplyTime
 	{
-		EMODIFY_AURA_TIMEINVALID = -1,
-		EMODIFY_AURA_TIMEONAPPEND,
-		EMODIFY_AURA_TIMEONREMOVE,
-		EMODIFY_AURA_TIMECOUNT
+		EModifyAuraTime_Invalid = -1,
+		EModifyAuraTime_OnAppend,
+		EModifyAuraTime_OnTrigger,
+		EModifyAuraTime_OnRemove,
+		EModifyAuraTime_Count
 	};
 	enum EModifierOnEotApplyTime
 	{
-		EMODIFY_EOT_TIMEINVALID = -1,
-		EMODIFY_EOT_TIMEONAPPEND,
-		EMODIFY_EOT_TIMEONTIRGGER,
-		EMODIFY_EOT_TIMEONREMOVE,
-		EMODIFY_EOT_TIMECOUNT,
+		EModifyEotTime_Invalid = -1,
+		EModifyEotTime_OnAppend,
+		EModifyEotTime_OnTrigger,
+		EModifyEotTime_OnRemove,
+		EModifyEotTime_Count,
 	};
 	enum EAttrModifierType
 	{
-		EATTR_MODIFY_TYPE_INVALID = -1,
-		EATTR_MODIFY_TYPE_CHAR,
-		EATTR_MODIFY_TYPE_SPELL,
-		EATTR_MODIFY_TYPE_BULLET,
-		EATTR_MODIFY_TYPE_AURA,
-		EATTR_MODIFY_TYPE_EOT,
-		EATTR_MODIFY_TYPE_COUNT
+		EAttrModifyType_Invalid = -1,
+		EAttrModifyType_Char,
+		EAttrModifyType_Skill,
+		EAttrModifyType_Bullet,
+		EAttrModifyType_Aura,
+		EAttrModifyType_Eot,
+		EAttrModifyType_Count
 	};
 
 	inline void SplitSeqKey(BSLib::s32 key, BSLib::s32 &type, BSLib::s32 &idx)

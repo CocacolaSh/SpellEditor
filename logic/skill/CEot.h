@@ -14,15 +14,22 @@ namespace SKILLEDITOR
 		virtual BSLib::s32	getLevel();
 		virtual EPeriodEffectType	getType();
 		virtual EPeriodEffectNature	getNature();
+		virtual float getJumpInterval(){return m_template ? m_template->m_data.m_jumpTime / 1000.f : 0.f;}
 		virtual bool update(CCharacterEntity *owner, float timePass);
 		virtual CPeriodEffect *clone();
 		virtual bool addToList(CPrdEftList * list, CCharacterEntity *src, CCharacterEntity * dst);
 		virtual void onAppend(CCharacterEntity *src, CCharacterEntity *dst);
 		virtual void onRemove(CCharacterEntity *dst);
 
+		void setupTemplate(EotTemplate* t);
+		void modifyMe();
+		void copyTemplate(EotTemplate *t);
+		EotTemplate * getInfo(){return m_template;}
+
 	private:
-		EotTemplate *m_eotTemplate;
+		EotTemplate *m_template;
 		float m_curInterval;
 	};
+	CEot *CreateEotInstance(EotTemplate *t, CCharacterEntity * src);
 }
 #endif

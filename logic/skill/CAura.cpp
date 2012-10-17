@@ -15,24 +15,24 @@ namespace SKILLEDITOR
 	CAura::CAura()
 	{
 		m_leftTime = 0;
-		m_auraTemplate = NULL;
+		m_template = NULL;
 		m_powerAdded = 0;
 	}
 	CAura::~CAura(){}
 
 	BSLib::s32	CAura::getID()
 	{
-		return m_auraTemplate->m_data.getID();
+		return m_template->m_data.getID();
 	}
 
 	BSLib::s32	CAura::getLevel()
 	{
-		return m_auraTemplate->m_data.getLevel();
+		return m_template->m_data.getLevel();
 	}
 
 	EPeriodEffectNature	CAura::getNature()
 	{
-		return (EPeriodEffectNature)(m_auraTemplate->m_data.m_isGood);
+		return (EPeriodEffectNature)(m_template->m_data.m_isGood);
 	}
 
 	bool CAura::update(CCharacterEntity *owner, float timePass)
@@ -50,7 +50,7 @@ namespace SKILLEDITOR
 	}
 	BSLib::s32 CAura::getEffectGroup()
 	{
-		return m_auraTemplate->m_data.m_groupID;
+		return m_template->m_data.m_groupID;
 	}
 	CPeriodEffect *CAura::clone()
 	{
@@ -60,20 +60,20 @@ namespace SKILLEDITOR
 			return NULL;
 		}
 		pAura->m_srcObjID = m_srcObjID;
-		pAura->setupTemplate(m_auraTemplate);
+		pAura->setupTemplate(m_template);
 		return pAura;
 	}
 
 	bool CAura::addToList(CPrdEftList * list, CCharacterEntity *src, CCharacterEntity * dst)
 	{
-		BSLib::s32 attrID = m_auraTemplate->m_data.m_targetAttrID;
-		BSLib::s32 attrDelta = m_auraTemplate->m_data.m_targetAttrType;
-		BSLib::s32 powerToAdd = m_auraTemplate->m_data.m_powerOfAura;
-		BSLib::s32 powerUpper = m_auraTemplate->m_data.m_powerUpperLimit;
+		BSLib::s32 attrID = m_template->m_data.m_targetAttrID;
+		BSLib::s32 attrDelta = m_template->m_data.m_targetAttrType;
+		BSLib::s32 powerToAdd = m_template->m_data.m_powerOfAura;
+		BSLib::s32 powerUpper = m_template->m_data.m_powerUpperLimit;
 
-		BSLib::s32 keyIndex = EGCAF_ATTRIBUTEA + attrDelta;
+		BSLib::s32 keyIndex = EGetCharAttrFunc_GetAttributeA + attrDelta;
 
-		TGetAttr get_attr = GetAttrFunc(EATTR_MODIFY_TYPE_CHAR, keyIndex);
+		TGetAttr get_attr = GetAttrFunc(EAttrModifyType_Char, keyIndex);
 		if (get_attr == NULL)
 		{
 			return false;
@@ -99,14 +99,14 @@ namespace SKILLEDITOR
 
 	void CAura::onAppend(CCharacterEntity *src, CCharacterEntity *dst)
 	{
-		BSLib::s32 attrID = m_auraTemplate->m_data.m_targetAttrID;
+		BSLib::s32 attrID = m_template->m_data.m_targetAttrID;
 
 		//A,B,C,D,EÐÞ¸ÄÊôÐÔµÄABCDE
-		BSLib::s32 attrDelta = m_auraTemplate->m_data.m_targetAttrType;
+		BSLib::s32 attrDelta = m_template->m_data.m_targetAttrType;
 
 		BSLib::s32 keyIndex = EAMKCHAR_ChangeAttributeA + attrDelta;
 
-		TAttrModifierFunc func = GetModifierFunc(EATTR_MODIFY_TYPE_CHAR, keyIndex);
+		TAttrModifierFunc func = GetModifierFunc(EAttrModifyType_Char, keyIndex);
 		if (func)
 		{
 			if ( !func(src, dst, keyIndex, attrID, m_powerAdded, 0))
@@ -121,9 +121,9 @@ namespace SKILLEDITOR
 
 		for (BSLib::u32 i = 0; i < MAX_SEQ; ++i)
 		{
-			sModifierMgr.applySeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONAPPEND][i], NULL, EATTR_MODIFY_TYPE_CHAR, dst);
+			sModifierMgr.applySeq(m_template->m_dwSeq[EModifyAuraTime_OnAppend][i], NULL, EAttrModifyType_Char, dst);
 		}
-		m_leftTime = m_timeTemplateSpan = m_auraTemplate->m_data.m_fixTime / 1000.f;
+		m_leftTime = m_timeTemplateSpan = m_template->m_data.m_fixTime / 1000.f;
 		CPeriodEffect::onAppend(src, dst);
 	}
 	void CAura::onRemove(CCharacterEntity *dst)
@@ -132,15 +132,15 @@ namespace SKILLEDITOR
 
 		for (BSLib::u32 i = 0; i < MAX_SEQ; ++i)
 		{
-			sModifierMgr.applySeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONREMOVE][i], NULL, EATTR_MODIFY_TYPE_CHAR, dst);
-			sModifierMgr.rollbackSeq(m_auraTemplate->m_dwSeq[EMODIFY_AURA_TIMEONAPPEND][i], NULL, EATTR_MODIFY_TYPE_CHAR, dst);
+			sModifierMgr.applySeq(m_template->m_dwSeq[EModifyAuraTime_OnRemove][i], NULL, EAttrModifyType_Char, dst);
+			sModifierMgr.rollbackSeq(m_template->m_dwSeq[EModifyAuraTime_OnAppend][i], NULL, EAttrModifyType_Char, dst);
 		}
-		BSLib::s32 attrID = m_auraTemplate->m_data.m_targetAttrID;
-		BSLib::s32 attrDelta = m_auraTemplate->m_data.m_targetAttrType;
+		BSLib::s32 attrID = m_template->m_data.m_targetAttrID;
+		BSLib::s32 attrDelta = m_template->m_data.m_targetAttrType;
 
 		BSLib::s32 keyIndex = EAMKCHAR_ChangeAttributeA + attrDelta;
 
-		TAttrModifierFunc func = GetModifierFunc(EATTR_MODIFY_TYPE_CHAR, keyIndex);
+		TAttrModifierFunc func = GetModifierFunc(EAttrModifyType_Char, keyIndex);
 		if (func)
 		{
 			if ( !func(NULL, dst, keyIndex, attrID, m_powerAdded, 0))
@@ -156,25 +156,25 @@ namespace SKILLEDITOR
 
 	void CAura::setupTemplate(AuraTemplate* t)
 	{
-		m_auraTemplate = t;
+		m_template = t;
 	}
 	void CAura::setupDuration(BSLib::s32 d){}
 	void CAura::modifyMe()
 	{
-		if (m_auraTemplate->m_iscpy)
+		if (m_template->m_iscpy)
 		{
 			return;
 		}
 		AuraTemplate *tmp = new AuraTemplate();
 		copyTemplate(tmp);
 		tmp->m_iscpy = true;
-		m_auraTemplate = tmp;
+		m_template = tmp;
 	}
 	void CAura::copyTemplate(AuraTemplate *t)
 	{
-		t->m_iscpy = m_auraTemplate->m_iscpy;
-		memcpy(&t->m_data, &m_auraTemplate->m_data, sizeof(AuraEntry));
-		memcpy(t->m_dwSeq, m_auraTemplate->m_dwSeq, sizeof(m_auraTemplate->m_dwSeq));
+		t->m_iscpy = m_template->m_iscpy;
+		memcpy(&t->m_data, &m_template->m_data, sizeof(AuraEntry));
+		memcpy(t->m_dwSeq, m_template->m_dwSeq, sizeof(m_template->m_dwSeq));
 	}
 
 	CAura *GCreateAuraInstance(AuraTemplate *t, CCharacterEntity *src)

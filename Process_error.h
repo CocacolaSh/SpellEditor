@@ -20,7 +20,7 @@
 #define SAFE_DELETE(__pointer__)					\
 	do												\
 	{												\
-	if (__pointer)								\
+	if (__pointer__)								\
 		{											\
 		delete (__pointer__);					\
 		(__pointer__) = NULL;					\

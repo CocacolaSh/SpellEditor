@@ -7,7 +7,7 @@ namespace SKILLEDITOR
 	AttrModifierList::AttrModifierList()
 	{
 		m_head = m_tail = NULL;
-		m_type = EATTR_MODIFY_TYPE_INVALID;
+		m_type = EAttrModifyType_Invalid;
 	}
 	bool AttrModifierList::addNode(AttrModifierNode *node)
 	{

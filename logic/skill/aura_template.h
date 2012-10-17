@@ -17,7 +17,7 @@ namespace SKILLEDITOR
 		}
 		bool m_iscpy;
 		AuraEntry	m_data;
-		BSLib::u32	m_dwSeq[EMODIFY_EOT_TIMECOUNT][MAX_SEQ];
+		BSLib::u32	m_dwSeq[EModifyEotTime_Count][MAX_SEQ];
 	};
 
 	class CAuraMgr

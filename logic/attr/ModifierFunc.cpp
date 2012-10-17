@@ -14,20 +14,20 @@ namespace SKILLEDITOR
 {
 	extern TAttrModifierFunc AttrCharModifierFunc[EAMKCHAR_Count];
 	extern TAttrModifierFunc AttrSkillModifierFunc[EAMKSkill_Count];
-	extern TAttrModifierFunc AttrBullectModifierFunc[EAMKBullet_Count];
+	extern TAttrModifierFunc AttrBulletModifierFunc[EAMKBullet_Count];
 	extern TAttrModifierFunc AttrEotModifierFunc[EAMKEOT_Count];
 	extern TAttrModifierFunc AttrAuraModifierFunc[EAMKAura_Count];
 
-	TAttrModifierFunc *AttrModifiers[EATTR_MODIFY_TYPE_COUNT] = 
+	TAttrModifierFunc *AttrModifiers[EAttrModifyType_Count] = 
 	{
 		AttrCharModifierFunc,
 		AttrSkillModifierFunc,
-		AttrBullectModifierFunc,
+		AttrBulletModifierFunc,
 		AttrEotModifierFunc,
 		AttrAuraModifierFunc
 	};
 
-	BSLib::s32 AttrModifierCount[EATTR_MODIFY_TYPE_COUNT] = 
+	BSLib::s32 AttrModifierCount[EAttrModifyType_Count] = 
 	{
 		EAMKCHAR_Count,
 	};
@@ -36,7 +36,7 @@ namespace SKILLEDITOR
 	{
 		TAttrModifierFunc func;
 
-		LOG_PROCESS_ERROR(funcType >= 0 || funcType < EATTR_MODIFY_TYPE_COUNT);
+		LOG_PROCESS_ERROR(funcType >= 0 || funcType < EAttrModifyType_Count);
 
 		BSLib::s32 keyCount = AttrModifierCount[funcType];
 		LOG_PROCESS_ERROR(key >= 0 && key < keyCount );

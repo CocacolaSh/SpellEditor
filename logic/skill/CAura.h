@@ -25,9 +25,9 @@ namespace SKILLEDITOR
 		void setupDuration(BSLib::s32 d);
 		void modifyMe();
 		void copyTemplate(AuraTemplate *t);
-		AuraTemplate * getInfo(){return m_auraTemplate;}
+		AuraTemplate * getInfo(){return m_template;}
 	private:
-		AuraTemplate *	m_auraTemplate;
+		AuraTemplate *	m_template;
 		BSLib::s32      m_powerAdded;
 	};
 	CAura *GCreateAuraInstance(AuraTemplate *t, CCharacterEntity *src);

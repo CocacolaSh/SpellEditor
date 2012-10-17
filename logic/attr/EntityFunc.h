@@ -1,40 +1,29 @@
 #ifndef __LOGIC_ATTR_ENTITYFUNC_H__
 #define __LOGIC_ATTR_ENTITYFUNC_H__
 
+#include "basedef.h"
 namespace SKILLEDITOR
 {
 	enum EGetCharAttrFunc
 	{
-		EGCAF_INVALID = 0,
-		EGCAF_DEBUFNO = 0x00000003,
-		EGCAF_FLAG,
-		EGCAF_MOVECONDITION,
-		EGCAF_ATTRPERCENT,
-		EGCAF_BUFFNO,
-		EGCAF_ATTRIBUTEA,
-		EGCAF_ATTRIBUTEB,
-		EGCAF_ATTRIBUTEC,
-		EGCAF_ATTRIBUTED,
-		EGCAF_ATTRIBUTEE,
-		EGCAF_GETISATT,
-		EGCAF_COUNT
+		EGetCharAttrFunc_INVALID = 0,
+		EGetCharAttrFunc_DebuffNo = 0x00000003,
+		EGetCharAttrFunc_Flag,
+		EGetCharAttrFunc_MoveCondition,
+		EGetCharAttrFunc_AttrPercent,
+		EGetCharAttrFunc_BuffNo,
+		EGetCharAttrFunc_GetAttributeA,
+		EGetCharAttrFunc_GetAttributeB,
+		EGetCharAttrFunc_GetAttributeC,
+		EGetCharAttrFunc_GetAttributeD,
+		EGetCharAttrFunc_GetAttributeE,
+		EGetCharAttrFunc_GetIsAtt,
+		EGetCharAttrFunc_COUNT
 	};
 
-	enum EGetSkillAttrFunc
-	{
-		EGSAF_INVALID = 0,
-		EGSAF_COUNT
-	};
-	enum EGetBulletAttrFunc
-	{
-		EGBAF_INVALID = 0,
-		EGBAF_COUNT
-	};
-	enum EGetEotAttrFunc
-	{
-		EGEAF_INVALID = 0,
-		EGEAF_COUNT
-	};
+	
+	
+	
 	//enum EGetAuraAttrFunc
 	//{
 	//	EGAAF_INVALID = 0,

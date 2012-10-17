@@ -4,8 +4,10 @@
 namespace SKILLEDITOR
 {
 	class IFighter;
-	typedef BSLib::s32 (* TGetAttr)(IFighter* ,BSLib::s32);
+	typedef BSLib::s32 (* TGetAttr)(void* ,BSLib::s32);
 	TGetAttr GetAttrFunc(BSLib::s32 funcType, BSLib::s32 key);
+
+	bool GetEumAttrTypeAndIndex(BSLib::s32 inIndex, BSLib::s32 &type, BSLib::s32 &index);
 }
 
 #endif

@@ -1,16 +1,16 @@
 #ifndef __LOGIC_ATTR_AURAFUNC_H__
 #define __LOGIC_ATTR_AURAFUNC_H__
-
+#include "basedef.h"
 namespace SKILLEDITOR
 {
 	enum EGetAuraAttrFunc
 	{
-		EGAFAura_INVALID = 0,
-		EGAFAura_GetAuraIsGood,		//
-		EGAFAura_GetAuraType,
-		EGAFAura_GetAuraResult,
-		EGAFAura_GetAuraFixTime,
-		EGAFAura_COUNT
+		EGetAuraAttrFunc_INVALID = 0,
+		EGetAuraAttrFunc_GetAuraIsGood,		//
+		EGetAuraAttrFunc_GetAuraType,
+		EGetAuraAttrFunc_GetAuraResult,
+		EGetAuraAttrFunc_GetAuraFixTime,
+		EGetAuraAttrFunc_COUNT
 	};
 }
 #endif
