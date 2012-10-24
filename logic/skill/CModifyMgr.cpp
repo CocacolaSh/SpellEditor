@@ -151,4 +151,11 @@ Exit0:
 Exit0:
 		return false;
 	}
+
+	bool CModifyMgr::load(const char* filePath = NULL)
+	{
+		//
+Exit0:
+		return false;
+	}
 }

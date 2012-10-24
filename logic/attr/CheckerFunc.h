@@ -17,6 +17,6 @@ namespace SKILLEDITOR
 	};
 
 	typedef bool (* TAttrCheckerFunc)( void *dst, BSLib::s32 type, BSLib::s32 func1, BSLib::s32 arg1, BSLib::s32 func2, BSLib::s32 arg2);
-	TAttrCheckerFunc GetCheckerFunc(BSLib::s32 funcType, BSLib::s32 key);
+	TAttrCheckerFunc GetCheckerFunc(BSLib::s32 funcType);
 }
 #endif

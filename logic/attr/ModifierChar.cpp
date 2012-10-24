@@ -717,7 +717,7 @@ namespace SKILLEDITOR
 //		bRet = GlobalCheckers::getInstance()->checkSeq(arg1, EATTR_MODIFY_TYPE_CHAR, pFighter);
 //		LOG_PROCESS_ERROR(bRet);
 //
-//		bRet = GlobalModifiers::getInstance()->applySeq(arg2, src,  EATTR_MODIFY_TYPE_CHAR, pTarget);
+//		bRet = sModifierMgr.applySeq(arg2, src,  EATTR_MODIFY_TYPE_CHAR, pTarget);
 //		LOG_PROCESS_ERROR(bRet);
 //
 //		return bRet;

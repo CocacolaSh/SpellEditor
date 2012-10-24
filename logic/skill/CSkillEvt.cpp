@@ -31,7 +31,7 @@ namespace SKILLEDITOR
 		//TEvtFuncList::iterator endItr = m_funcList.end();
 		//for (; begItr != endItr; ++begItr)
 		//{
-		//	CGlobalModifiers::getInstance()->applySeq(*begItr, src, type, dst);
+		//	sModifierMgr.applySeq(*begItr, src, type, dst);
 		//}
 		return true;
 	}

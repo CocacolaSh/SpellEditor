@@ -1,5 +1,6 @@
 #include "CheckerFunc.h"
-
+#include "attrFunc.h"
+#include "Process_error.h"
 namespace SKILLEDITOR
 {
 	inline bool FeatchAttr( void *dst, BSLib::s32 type, BSLib::s32 funcid, BSLib::s32 arg, BSLib::s32 &res)
@@ -29,7 +30,7 @@ Exit0:
 		bRet = FeatchAttr(dst, type, func1, arg1, first);
 		LOG_PROCESS_ERROR(bRet);
 
-		bRet = FeatchAttr(dst, type, func2, arg3, second);
+		bRet = FeatchAttr(dst, type, func2, arg2, second);
 		LOG_PROCESS_ERROR(bRet);
 
 		return first == second;
@@ -38,23 +39,78 @@ Exit0:
 	}
 	bool AttrChecker_UnEqual( void *dst, BSLib::s32 type, BSLib::s32 func1, BSLib::s32 arg1, BSLib::s32 func2, BSLib::s32 arg2)
 	{
-		//
+		BSLib::s32 first, second;
+		bool bRet = true;
+
+		bRet = FeatchAttr(dst, type, func1, arg1, first);
+		LOG_PROCESS_ERROR(bRet);
+
+		bRet = FeatchAttr(dst, type, func2, arg2, second);
+		LOG_PROCESS_ERROR(bRet);
+
+		return first != second;
+Exit0:
+		return false;
 	}
 	bool AttrChecker_More( void *dst, BSLib::s32 type, BSLib::s32 func1, BSLib::s32 arg1, BSLib::s32 func2, BSLib::s32 arg2)
 	{
-		//
+		BSLib::s32 first, second;
+		bool bRet = true;
+
+		bRet = FeatchAttr(dst, type, func1, arg1, first);
+		LOG_PROCESS_ERROR(bRet);
+
+		bRet = FeatchAttr(dst, type, func2, arg2, second);
+		LOG_PROCESS_ERROR(bRet);
+
+		return first > second;
+Exit0:
+		return false;
 	}
 	bool AttrChecker_Less( void *dst, BSLib::s32 type, BSLib::s32 func1, BSLib::s32 arg1, BSLib::s32 func2, BSLib::s32 arg2)
 	{
-		//
+		BSLib::s32 first, second;
+		bool bRet = true;
+
+		bRet = FeatchAttr(dst, type, func1, arg1, first);
+		LOG_PROCESS_ERROR(bRet);
+
+		bRet = FeatchAttr(dst, type, func2, arg2, second);
+		LOG_PROCESS_ERROR(bRet);
+
+		return first < second;
+Exit0:
+		return false;
 	}
 	bool AttrChecker_Include( void *dst, BSLib::s32 type, BSLib::s32 func1, BSLib::s32 arg1, BSLib::s32 func2, BSLib::s32 arg2)
 	{
-		//
+		BSLib::s32 first, second;
+		bool bRet = true;
+
+		bRet = FeatchAttr(dst, type, func1, arg1, first);
+		LOG_PROCESS_ERROR(bRet);
+
+		bRet = FeatchAttr(dst, type, func2, arg2, second);
+		LOG_PROCESS_ERROR(bRet);
+
+		return (first & second) != 0;
+Exit0:
+		return false;
 	}
 	bool AttrChecker_Exclude( void *dst, BSLib::s32 type, BSLib::s32 func1, BSLib::s32 arg1, BSLib::s32 func2, BSLib::s32 arg2)
 	{
-		//
+		BSLib::s32 first, second;
+		bool bRet = true;
+
+		bRet = FeatchAttr(dst, type, func1, arg1, first);
+		LOG_PROCESS_ERROR(bRet);
+
+		bRet = FeatchAttr(dst, type, func2, arg2, second);
+		LOG_PROCESS_ERROR(bRet);
+
+		return (first & second) == 0;
+Exit0:
+		return false;
 	}
 	TAttrCheckerFunc AttrCheckerFuncs[ECheckerType_Count] = 
 	{

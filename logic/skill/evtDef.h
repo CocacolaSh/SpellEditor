@@ -36,5 +36,11 @@ namespace SKILLEDITOR
 		type = (key & 0x0f000000) >> 24;
 		idx = key & 0x00ffffff;
 	}
+	inline void SplitFunctionKey(BSLib::s32 key, BSLib::s32 &type, BSLib::s32 &idx)
+	{
+		type = (key & 0x00ff0000) >> 16;
+		idx = key & 0x0000ffff;
+	}
+	
 }
 #endif

@@ -60,6 +60,7 @@ namespace SKILLEDITOR
 		bool applySeq(BSLib::s32 seqID, CCharacterEntity *src, BSLib::s32 type, void *dst);
 		bool rollbackSeq(BSLib::s32 seqID, CCharacterEntity *src, BSLib::s32 type, void *dst);
 
+		bool load(const char* filePath = NULL);
 	private:
 		typedef std::map<BSLib::u32, AttrModifierList *> TModifierList;
 		TModifierList		m_modifierList;

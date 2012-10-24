@@ -1,4 +1,5 @@
 #include "CCheckerMgr.h"
+#include "Process_error.h"
 #include "../attr/CheckerFunc.h"
 
 namespace SKILLEDITOR

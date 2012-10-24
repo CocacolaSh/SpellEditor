@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40"
+ xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml"
+ xmlns:udc="http://schemas.microsoft.com/data/udc"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:udcxf="http://schemas.microsoft.com/data/udc/xmlfile">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Created>2006-09-13T11:21:51Z</Created>
+  <LastSaved>2012-10-24T09:05:37Z</LastSaved>
+  <Version>12.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <RemovePersonalInformation/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>11640</WindowHeight>
+  <WindowWidth>19200</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>90</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+  <FutureVer>11</FutureVer>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Center"/>
+   <Borders/>
+   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <NumberFormat ss:Format="@"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table ss:ExpandedColumnCount="69" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="94.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="92.25" ss:Span="2"/>
+   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="87.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:Index="14" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="128.25"/>
+   <Column ss:Index="18" ss:AutoFitWidth="0" ss:Width="63"/>
+   <Column ss:Index="20" ss:AutoFitWidth="0" ss:Width="97.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="90.75"/>
+   <Column ss:Index="23" ss:AutoFitWidth="0" ss:Width="95.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="74.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69"/>
+   <Column ss:Index="28" ss:AutoFitWidth="0" ss:Width="62.25"/>
+   <Column ss:Index="30" ss:AutoFitWidth="0" ss:Width="69"/>
+   <Column ss:AutoFitWidth="0" ss:Width="72"/>
+   <Column ss:AutoFitWidth="0" ss:Width="63"/>
+   <Column ss:Index="43" ss:AutoFitWidth="0" ss:Width="71.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="72.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.75" ss:Span="1"/>
+   <Column ss:Index="48" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="71.25" ss:Span="1"/>
+   <Column ss:Index="52" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:Index="69" ss:AutoFitWidth="0" ss:Width="127.5"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SeqID</Data></Cell>
+    <Cell><Data ss:Type="String">key1</Data></Cell>
+    <Cell><Data ss:Type="String">value1-1</Data></Cell>
+    <Cell><Data ss:Type="String">value1-2</Data></Cell>
+    <Cell><Data ss:Type="String">value1-3</Data></Cell>
+    <Cell><Data ss:Type="String">key2</Data></Cell>
+    <Cell><Data ss:Type="String">value2-1</Data></Cell>
+    <Cell><Data ss:Type="String">value2-2</Data></Cell>
+    <Cell><Data ss:Type="String">value2-3</Data></Cell>
+    <Cell><Data ss:Type="String">key3</Data></Cell>
+    <Cell><Data ss:Type="String">value3-1</Data></Cell>
+    <Cell><Data ss:Type="String">value3-2</Data></Cell>
+    <Cell><Data ss:Type="String">value3-3</Data></Cell>
+    <Cell><Data ss:Type="String">key4</Data></Cell>
+    <Cell><Data ss:Type="String">value4-1</Data></Cell>
+    <Cell><Data ss:Type="String">value4-2</Data></Cell>
+    <Cell><Data ss:Type="String">value4-3</Data></Cell>
+    <Cell><Data ss:Type="String">key5</Data></Cell>
+    <Cell><Data ss:Type="String">value5-1</Data></Cell>
+    <Cell><Data ss:Type="String">value5-2</Data></Cell>
+    <Cell><Data ss:Type="String">value5-3</Data></Cell>
+    <Cell><Data ss:Type="String">key6</Data></Cell>
+    <Cell><Data ss:Type="String">value6-1</Data></Cell>
+    <Cell><Data ss:Type="String">value6-2</Data></Cell>
+    <Cell><Data ss:Type="String">value6-3</Data></Cell>
+    <Cell><Data ss:Type="String">key7</Data></Cell>
+    <Cell><Data ss:Type="String">value7-1</Data></Cell>
+    <Cell><Data ss:Type="String">value7-2</Data></Cell>
+    <Cell><Data ss:Type="String">value7-3</Data></Cell>
+    <Cell><Data ss:Type="String">key8</Data></Cell>
+    <Cell><Data ss:Type="String">value8-1</Data></Cell>
+    <Cell><Data ss:Type="String">value8-2</Data></Cell>
+    <Cell><Data ss:Type="String">value8-3</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="Number">4</Data></Cell>
+    <Cell><Data ss:Type="Number">5</Data></Cell>
+    <Cell><Data ss:Type="Number">6</Data></Cell>
+    <Cell><Data ss:Type="Number">7</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
+    <Cell><Data ss:Type="Number">9</Data></Cell>
+    <Cell><Data ss:Type="Number">10</Data></Cell>
+    <Cell><Data ss:Type="Number">11</Data></Cell>
+    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">13</Data></Cell>
+    <Cell><Data ss:Type="Number">14</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">16</Data></Cell>
+    <Cell><Data ss:Type="Number">17</Data></Cell>
+    <Cell><Data ss:Type="Number">18</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="Number">21</Data></Cell>
+    <Cell><Data ss:Type="Number">22</Data></Cell>
+    <Cell><Data ss:Type="Number">23</Data></Cell>
+    <Cell><Data ss:Type="Number">24</Data></Cell>
+    <Cell><Data ss:Type="Number">25</Data></Cell>
+    <Cell><Data ss:Type="Number">26</Data></Cell>
+    <Cell><Data ss:Type="Number">27</Data></Cell>
+    <Cell><Data ss:Type="Number">28</Data></Cell>
+    <Cell><Data ss:Type="Number">29</Data></Cell>
+    <Cell><Data ss:Type="Number">30</Data></Cell>
+    <Cell><Data ss:Type="Number">31</Data></Cell>
+    <Cell><Data ss:Type="Number">32</Data></Cell>
+   </Row>
+   <Row ss:Index="6" ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="s62"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>200</HorizontalResolution>
+    <VerticalResolution>200</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet2">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+   <Row ss:AutoFitHeight="0"/>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>200</HorizontalResolution>
+    <VerticalResolution>200</VerticalResolution>
+   </Print>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet3">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+   <Row ss:AutoFitHeight="0"/>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>200</HorizontalResolution>
+    <VerticalResolution>200</VerticalResolution>
+   </Print>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <x2:MapInfo x2:HideInactiveListBorder="false">
+  <x2:Schema x2:ID="Schema1" x2:Namespace=""><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=""><xsd:element nillable="true" name="alldata"><xsd:complexType><xsd:sequence minOccurs="0"><xsd:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="metadata" form="unqualified"><xsd:complexType><xsd:sequence minOccurs="0"><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="ID" form="unqualified"></xsd:element><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="SkillID" form="unqualified"></xsd:element><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="SkillName" form="unqualified"></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema></x2:Schema>
+  <x2:Map x2:ID="alldata_映射" x2:SchemaID="Schema1" x2:RootElement="alldata">
+  </x2:Map>
+ </x2:MapInfo>
+ <x2:Binding x2:ID="Binding1" x2:LoadMode="normal">
+  <x2:MapID>alldata_映射</x2:MapID>
+<udc:DataSource MajorVersion="1" MinorVersion="0" xmlns:udc="http://schemas.microsoft.com/data/udc">
+  <udc:Type Type="XMLFile" MajorVersion="1" MinorVersion="0"/>
+  <udc:Name>Binding1</udc:Name>
+  <udc:ConnectionInfo Purpose="Query">
+    <udcxf:File xmlns:udcxf="http://schemas.microsoft.com/data/udc/xmlfile">C:\Documents and Settings\user\桌面\新建 文本文档.txt</udcxf:File>
+  </udc:ConnectionInfo>
+</udc:DataSource>
+ </x2:Binding>
+</Workbook>

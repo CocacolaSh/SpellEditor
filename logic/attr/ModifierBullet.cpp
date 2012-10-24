@@ -137,7 +137,7 @@ Exit0:*/
 //			return false;
 //		}
 //
-//		return CGlobalModifiers::getInstance()->applySeq(arg2, src, EATTR_MODIFY_TYPE_CHAR, pBullet->getTarget());
+//		return sModifierMgr.applySeq(arg2, src, EATTR_MODIFY_TYPE_CHAR, pBullet->getTarget());
 //Exit0:
 		return false;
 	}
@@ -151,7 +151,7 @@ Exit0:*/
 //			return false;
 //		}
 //
-//		return CGlobalModifiers::getInstance()->applySeq(arg2, src, EATTR_MODIFY_TYPE_CHAR, pBullet->getSource());
+//		return sModifierMgr.applySeq(arg2, src, EATTR_MODIFY_TYPE_CHAR, pBullet->getSource());
 //Exit0:
 		return false;
 	}
@@ -275,7 +275,7 @@ Exit0:*/
 //			return false;
 //		}
 //
-//		return CGlobalModifiers::getInstance()->applySeq(arg2, src, EATTR_MODIFY_TYPE_BULLET, pBullet->getSource());
+//		return sModifierMgr.applySeq(arg2, src, EATTR_MODIFY_TYPE_BULLET, pBullet->getSource());
 //Exit0:
 		return false;
 	}
