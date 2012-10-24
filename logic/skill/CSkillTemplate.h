@@ -86,7 +86,27 @@ namespace SKILLEDITOR
 
 	enum ESkillScenarioType
 	{
+		ESkillScenarioType_Invalid = -1,
+		ESkillScenarioType_Ignore,
+		ESkillScenarioType_PVE,
+		ESkillScenarioType_PVP,
+		ESkillScenarioType_Count,
+	};
 
+	enum ESkillChargeLevel
+	{
+		ESkillChargeLevel_Level0 = 0,
+		ESkillChargeLevel_Level1,
+		ESkillChargeLevel_Count,
+	};
+
+	class CSkillTemplate
+	{
+	public:
+		CSkillTemplate();
+		virtual ~CSkillTemplate();
+	private:
+		CSkillEntry*			m_skillEntrys[ESkillChargeLevel_Count][ESkillScenarioType_Count];
 	};
 }
 #endif
