@@ -20,6 +20,14 @@ namespace SKILLEDITOR
 		EModifyEotTime_OnRemove,
 		EModifyEotTime_Count,
 	};
+	enum EModifierOnSkillApplyTime
+	{
+		EModifySkillTime_Invalid = -1,
+		EModifySkillTime_OnHit1,
+		EModifySkillTime_OnHit2,
+		EModifySkillTime_OnHit3,
+		EModifySkillTime_Count,
+	};
 	enum EAttrModifierType
 	{
 		EAttrModifyType_Invalid = -1,

@@ -1,15 +1,9 @@
 #ifndef __LOGIC_SKILL_CBULLET_H__
 #define __LOGIC_SKILL_CBULLET_H__
 #include "basedef.h"
+#include "CSkillTemplate.h"
 #include "../attr/attrList.h"
-namespace GSLib
-{
-	struct SSkillEntryParameter
-	{
-		BSLib::s16	m_chargeLevel;
-		BSLib::s16	m_mountType;
-	};
-}
+
 namespace SKILLEDITOR
 {
 	class CSkillTemplate;

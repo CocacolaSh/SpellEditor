@@ -193,19 +193,4 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <x2:MapInfo x2:HideInactiveListBorder="false">
-  <x2:Schema x2:ID="Schema1" x2:Namespace=""><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=""><xsd:element nillable="true" name="alldata"><xsd:complexType><xsd:sequence minOccurs="0"><xsd:element minOccurs="0" maxOccurs="unbounded" nillable="true" name="metadata" form="unqualified"><xsd:complexType><xsd:sequence minOccurs="0"><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="ID" form="unqualified"></xsd:element><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="SkillID" form="unqualified"></xsd:element><xsd:element minOccurs="0" nillable="true" type="xsd:string" name="SkillName" form="unqualified"></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema></x2:Schema>
-  <x2:Map x2:ID="alldata_映射" x2:SchemaID="Schema1" x2:RootElement="alldata">
-  </x2:Map>
- </x2:MapInfo>
- <x2:Binding x2:ID="Binding1" x2:LoadMode="normal">
-  <x2:MapID>alldata_映射</x2:MapID>
-<udc:DataSource MajorVersion="1" MinorVersion="0" xmlns:udc="http://schemas.microsoft.com/data/udc">
-  <udc:Type Type="XMLFile" MajorVersion="1" MinorVersion="0"/>
-  <udc:Name>Binding1</udc:Name>
-  <udc:ConnectionInfo Purpose="Query">
-    <udcxf:File xmlns:udcxf="http://schemas.microsoft.com/data/udc/xmlfile">C:\Documents and Settings\user\桌面\新建 文本文档.txt</udcxf:File>
-  </udc:ConnectionInfo>
-</udc:DataSource>
- </x2:Binding>
 </Workbook>

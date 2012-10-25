@@ -1,11 +1,22 @@
 #ifndef __LOGIC_SKILL_CSKILLTEMPLATE_H__
 #define __LOGIC_SKILL_CSKILLTEMPLATE_H__
 #include "basedef.h"
+#include "evtDef.h"
+#include <vector>
+#include <string>
 #include <map>
 
+namespace GSLib
+{
+	struct SSkillEntryParameter
+	{
+		BSLib::s16	m_chargeLevel;
+		BSLib::s16	m_scenarioType;
+	};
+}
 namespace SKILLEDITOR
 {
-
+	
 	enum ESkillType
 	{
 		ESkillType_Invalid = -1,
@@ -81,7 +92,7 @@ namespace SKILLEDITOR
 		std::vector<BSLib::u64>			m_attackEnhancement;
 
 		
-		BSLib::u32						m_seq[mos_atCount];
+		BSLib::u32						m_seq[EModifySkillTime_Count];
 	};
 
 	enum ESkillScenarioType
@@ -105,6 +116,9 @@ namespace SKILLEDITOR
 	public:
 		CSkillTemplate();
 		virtual ~CSkillTemplate();
+
+		bool addSkillEntry(CSkillEntry *pSkillEntry);
+		CSkillEntry* getSkillEntry(const ::GSLib::SSkillEntryParameter& skillParameter)const;
 	private:
 		CSkillEntry*			m_skillEntrys[ESkillChargeLevel_Count][ESkillScenarioType_Count];
 	};

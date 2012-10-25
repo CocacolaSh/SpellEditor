@@ -152,7 +152,7 @@ Exit0:
 		return false;
 	}
 
-	bool CModifyMgr::load(const char* filePath = NULL)
+	bool CModifyMgr::load(const char* filePath)
 	{
 		//
 Exit0:
