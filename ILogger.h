@@ -13,7 +13,7 @@ namespace BSLib
 	};
 
 	void g_printLog(ELogLevel logLevel, c8 *format, c8* condition, c8* func, c8* file, BSLib::u32 line);
-	class ILogger : public IRefrenceCount
+	class ILogger : public IReferenceCounted
 	{
 	public:
 		virtual ~ILogger(){;}

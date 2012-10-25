@@ -3,14 +3,14 @@
 #include "basedef.h"
 namespace BSLib
 {
-	class IRefrenceCount
+	class IReferenceCounted
 	{
 	public:
-		IRefrenceCount():m_debugName(0), m_counts(1)
+		IReferenceCounted():m_debugName(0), m_counts(1)
 		{
 			//
 		}
-		virtual ~IRefrenceCount(){}
+		virtual ~IReferenceCounted(){}
 
 		void grab(){++m_counts;}
 		bool drop()
