@@ -39,15 +39,15 @@ namespace BSLib
 
 		//! Get name of file.
 		/** \return File name as zero terminated character string. */
-		virtual const std::string& getFileName() const = 0;
+		virtual const BSLib::stringc& getFileName() const = 0;
 	};
 
 	//! Internal function, please do not use.
-	IReadFile* createReadFile(const std::string& fileName);
+	IReadFile* createReadFile(const BSLib::stringc& fileName);
 	//! Internal function, please do not use.
-	IReadFile* createLimitReadFile(const std::string& fileName, IReadFile* alreadyOpenedFile, long pos, long areaSize);
+	IReadFile* createLimitReadFile(const BSLib::stringc& fileName, IReadFile* alreadyOpenedFile, long pos, long areaSize);
 	//! Internal function, please do not use.
-	IReadFile* createMemoryReadFile(void* memory, long size, const std::string& fileName, bool deleteMemoryWhenDropped);
+	IReadFile* createMemoryReadFile(void* memory, long size, const BSLib::stringc& fileName, bool deleteMemoryWhenDropped);
 
 } // end namespace io
 

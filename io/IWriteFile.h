@@ -6,6 +6,7 @@
 #define __I_WRITE_FILE_H_INCLUDED__
 
 #include "RefrenceCount.h"
+#include "../colaString.h"
 //#include "path.h"
 
 namespace BSLib
@@ -35,11 +36,11 @@ namespace BSLib
 
 		//! Get name of file.
 		/** \return File name as zero terminated character string. */
-		virtual const std::string& getFileName() const = 0;
+		virtual const BSLib::stringc& getFileName() const = 0;
 	};
 
 	//! Internal function, please do not use.
-	IWriteFile* createWriteFile(const std::string& fileName, bool append);
+	IWriteFile* createWriteFile(const BSLib::stringc& fileName, bool append);
 
 } // end namespace io
 

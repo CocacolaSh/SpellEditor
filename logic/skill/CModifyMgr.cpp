@@ -2,6 +2,8 @@
 #include "Process_error.h"
 #include "../attr/ModifierFunc.h"
 #include "evtDef.h"
+#include "../../colaString.h"
+#include "../../io/CXmlExcel.h"
 namespace SKILLEDITOR
 {
 	AttrModifierList::AttrModifierList()
@@ -154,7 +156,15 @@ Exit0:
 
 	bool CModifyMgr::load(const char* filePath)
 	{
-		//
+		BSLib::stringc fileName = "skill_modifierseq.xml";
+		if (filePath != NULL)
+		{
+			fileName = filePath;
+		}
+
+		BSLib::CXmlExcel xmlExcel;
+		xmlExcel.loadFile(fileName);
+		return true;
 Exit0:
 		return false;
 	}

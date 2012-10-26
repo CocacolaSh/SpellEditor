@@ -1,6 +1,7 @@
 #ifndef __IO_CTABLE_H__
 #define __IO_CTABLE_H__
 #include "basedef.h"
+#include "../colaString.h"
 #include <vector>
 #include <hash_map>
 
@@ -82,7 +83,7 @@ namespace BSLib
 		}
 
 
-		CELLTYPE * getColumn(std::string &columnName)const
+		CELLTYPE * getColumn(BSLib::stringc &columnName)const
 		{
 			BSLib::s32 columnIndex = m_table->getColumnIndex(columnName);
 			return getColumn(columnIndex);
@@ -92,7 +93,7 @@ namespace BSLib
 		{
 			return *(getColumn(index));
 		}
-		CELLTYPE& operator[](std::string &columnName)const
+		CELLTYPE& operator[](BSLib::stringc &columnName)const
 		{
 			return *(getColumn(columnName));
 		}
@@ -157,21 +158,21 @@ namespace BSLib
 		BSLib::s32 rowSize() const {return m_rows.size();}
 		BSLib::s32 columnSize() const {return m_columnSize;}
 
-		virtual void setColumnName(BSLib::s32 index, std::string & name)
+		virtual void setColumnName(BSLib::s32 index, BSLib::stringc & name)
 		{
 			m_columnNames[index] = name;
 			m_columnNameHash[name] = index;
 		}
-		BSLib::s32 getColumnIndex(const std::string name) const
+		BSLib::s32 getColumnIndex(const BSLib::stringc name) const
 		{
-			std::hash_map<std::string, BSLib::s32>::iterator begIter = m_columnNameHash.find(name);
+			std::hash_map<BSLib::stringc, BSLib::s32>::iterator begIter = m_columnNameHash.find(name);
 			if (begIter == m_columnNameHash.end())
 			{
 				return -1;
 			}
 			return begIter->second;
 		}
-		std::string & getColumnName(BSLib::s32 index) const
+		BSLib::stringc & getColumnName(BSLib::s32 index) const
 		{
 			return m_columnNames[index];
 		}
@@ -239,7 +240,7 @@ namespace BSLib
 		}
 
 		template <class VALUETYPE>
-		bool getColumnValue(BSLib::s32 rowIndex, std::string& columnName, VALUETYPE& value)const
+		bool getColumnValue(BSLib::s32 rowIndex, BSLib::stringc& columnName, VALUETYPE& value)const
 		{
 			BSLib::s32 columnIndex = getColumnIndex(columnName);
 			return getColumnValue(rowIndex, columnIndex, value);
@@ -269,14 +270,14 @@ namespace BSLib
 		}
 
 		template <class VALUETYPE>
-		bool setColumnValue(BSLib::s32 rowIndex, std::string& columnName, VALUETYPE& value)const
+		bool setColumnValue(BSLib::s32 rowIndex, BSLib::stringc& columnName, VALUETYPE& value)const
 		{
 			BSLib::s32 columnIndex = getColumnIndex(columnName);
 			return setColumnValue(rowIndex, columnIndex, value);
 		}
 
 		template <class VALUETYPE>
-		bool operator() (BSLib::s32 rowIndex, std::string& columnName, VALUETYPE& value)const
+		bool operator() (BSLib::s32 rowIndex, BSLib::stringc& columnName, VALUETYPE& value)const
 		{
 			return getColumnValue(rowIndex, columnName, value);
 		}
@@ -299,8 +300,8 @@ namespace BSLib
 	private:
 		BSLib::s32 m_columnSize;
 		std::vector< ROWTYPE *> m_rows;
-		stdext::hash_map< std::string, BSLib::s32> m_columnNameHash;
-		std::vector< std::string> m_columnNames;
+		stdext::hash_map< BSLib::stringc, BSLib::s32, stdext::hash_compare<BSLib::stringc, std::less<BSLib::stringc> > > m_columnNameHash;
+		std::vector< BSLib::stringc> m_columnNames;
 
 		friend class CTableRow<TYPE, CELLTYPE>;
 	};

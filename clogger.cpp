@@ -1,5 +1,5 @@
 #include "clogger.h"
-#include <string>
+#include "colaString.h"
 #include <locale>
 #include <sstream>
 
@@ -7,7 +7,7 @@ using namespace std;
 
 namespace BSLib
 {
-	std::string ToNarrow( const wchar_t *s, char dfault = '?', 
+	BSLib::stringc ToNarrow( const wchar_t *s, char dfault = '?', 
 		const std::locale& loc = std::locale() )
 	{
 		std::ostringstream stm;
@@ -15,7 +15,7 @@ namespace BSLib
 		while( *s != L'\0' ) {
 			stm << std::use_facet< std::ctype<wchar_t> >( loc ).narrow( *s++, dfault );
 		}
-		return stm.str();
+		return BSLib::stringc(stm.str().c_str());
 	}
 
 	
@@ -56,7 +56,7 @@ namespace BSLib
 			return;
 		}
 
-		std::string logText(text);
+		BSLib::stringc logText(text);
 		logText += ":";
 		logText += hits;
 
@@ -69,8 +69,8 @@ namespace BSLib
 			return;
 		}
 
-		std::string logText(text);
-		std::string logHint = ToNarrow(hint);
+		BSLib::stringc logText(text);
+		BSLib::stringc logHint = ToNarrow(hint);
 		return log(logText.c_str(), logHint.c_str(), logLevel);
 	}
 	void CLogger::log(const wchar_t* text, const wchar_t* hint, ELogLevel logLevel)
@@ -80,8 +80,8 @@ namespace BSLib
 			return;
 		}
 
-		std::string logText = ToNarrow(text);
-		std::string logHint = ToNarrow(hint);
+		BSLib::stringc logText = ToNarrow(text);
+		BSLib::stringc logHint = ToNarrow(hint);
 		return log(logText.c_str(), logHint.c_str(), logLevel);
 	}
 
@@ -92,7 +92,7 @@ namespace BSLib
 			return;
 		}
 
-		std::string logText = ToNarrow(text);
+		BSLib::stringc logText = ToNarrow(text);
 		return log(logText.c_str(), logLevel);
 	}
 

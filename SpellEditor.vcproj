@@ -222,6 +222,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\colaAllocator.h"
+				>
+			</File>
+			<File
+				RelativePath=".\colaString.h"
+				>
+			</File>
+			<File
 				RelativePath=".\IEventReceiver.h"
 				>
 			</File>
@@ -449,6 +457,66 @@
 					>
 				</File>
 			</Filter>
+		</Filter>
+		<Filter
+			Name="io"
+			>
+			<File
+				RelativePath=".\io\CTable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXmlExcel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXmlExcel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXMLReader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXMLReader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXMLReaderImpl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXMLWriter.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\io\CXMLWriter.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\IReadFile.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\irrXML.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\io\irrXML.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\IWriteFile.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\IXMLReader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\io\IXMLWriter.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

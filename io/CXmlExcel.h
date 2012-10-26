@@ -7,9 +7,9 @@ namespace BSLib
 {
 	class CExcelBook;
 
-	typedef CTableCell<std::string> CXmlExcelCell;
-	typedef CTableRow<std::string> CExcelTableRow;
-	typedef CTable<std::string>	CExcelTable;
+	typedef CTableCell<BSLib::stringc> CXmlExcelCell;
+	typedef CTableRow<BSLib::stringc> CExcelTableRow;
+	typedef CTable<BSLib::stringc>	CExcelTable;
 
 	class CXmlExcel
 	{
@@ -17,13 +17,13 @@ namespace BSLib
 		CXmlExcel();
 		~CXmlExcel();
 
-		bool loadFile(std::string &fileName);
-		bool saveFile(std::string &fileName);
+		bool loadFile(BSLib::stringc &fileName);
+		bool saveFile(BSLib::stringc &fileName);
 
 		bool clear();
 	private:
 
-		std::string m_fileName;
+		BSLib::stringc m_fileName;
 		CExcelBook* m_excelBook;
 	};
 }

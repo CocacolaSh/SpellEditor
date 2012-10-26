@@ -6,9 +6,9 @@
 #define __ICXML_READER_IMPL_H_INCLUDED__
 
 #include "irrXML.h"
-#include <string>
+//#include <string>
 #include <vector>
-//#include "irrString.h"
+#include "../colaString.h"
 //#include "irrArray.h"
 //#include "fast_atof.h"
 
@@ -143,7 +143,7 @@ namespace BSLib
 				if (!attr)
 					return 0;
 
-				std::string c(attr->Value.c_str());
+				BSLib::stringc c(attr->Value.c_str());
 				return atoi(c.c_str());
 			}
 
@@ -155,7 +155,7 @@ namespace BSLib
 				if (!attrvalue)
 					return 0;
 
-				std::string c(attrvalue);
+				BSLib::stringc c(attrvalue);
 				return atoi(c.c_str());
 			}
 
@@ -167,7 +167,7 @@ namespace BSLib
 				if (!attr)
 					return 0;
 
-				std::string c = attr->Value.c_str();
+				BSLib::stringc c = attr->Value.c_str();
 				return atof(c.c_str());
 			}
 
@@ -179,7 +179,7 @@ namespace BSLib
 				if (!attrvalue)
 					return 0;
 
-				std::string c = attrvalue;
+				BSLib::stringc c = attrvalue;
 				return atof(c.c_str());
 			}
 
@@ -279,7 +279,7 @@ namespace BSLib
 				}
 
 				// set current text to the parsed text, and replace xml special characters
-				std::basic_string<char_type> s(start, (int)(end - start));
+				BSLib::string<char_type> s(start, (int)(end - start));
 				NodeName = replaceSpecialCharacters(s);
 
 				// current XML node type is text
@@ -326,7 +326,7 @@ namespace BSLib
 				}
 
 				P -= 3;
-				NodeName = std::basic_string<char_type>(pCommentBegin+2, (int)(P - pCommentBegin-2));
+				NodeName = BSLib::string<char_type>(pCommentBegin+2, (int)(P - pCommentBegin-2));
 				P += 3;
 			}
 
@@ -390,10 +390,10 @@ namespace BSLib
 							++P;
 
 							SAttribute attr;
-							attr.Name = std::basic_string<char_type>(attributeNameBegin, 
+							attr.Name = BSLib::string<char_type>(attributeNameBegin, 
 								(int)(attributeNameEnd - attributeNameBegin));
 
-							std::basic_string<char_type> s(attributeValueBegin, 
+							BSLib::string<char_type> s(attributeValueBegin, 
 								(int)(attributeValueEnd - attributeValueBegin));
 
 							attr.Value = replaceSpecialCharacters(s);
@@ -417,7 +417,7 @@ namespace BSLib
 					endName--;
 				}
 
-				NodeName = std::basic_string<char_type>(startName, (int)(endName - startName));
+				NodeName = BSLib::string<char_type>(startName, (int)(endName - startName));
 
 				++P;
 			}
@@ -436,7 +436,7 @@ namespace BSLib
 				while(*P != L'>')
 					++P;
 
-				NodeName = std::basic_string<char_type>(pBeginClose, (int)(P - pBeginClose));
+				NodeName = BSLib::string<char_type>(pBeginClose, (int)(P - pBeginClose));
 				++P;
 			}
 
@@ -476,7 +476,7 @@ namespace BSLib
 				}
 
 				if ( cDataEnd )
-					NodeName = std::basic_string<char_type>(cDataBegin, (int)(cDataEnd - cDataBegin));
+					NodeName = BSLib::string<char_type>(cDataBegin, (int)(cDataEnd - cDataBegin));
 				else
 					NodeName = "";
 
@@ -487,8 +487,8 @@ namespace BSLib
 			// structure for storing attribute-name pairs
 			struct SAttribute
 			{
-				std::basic_string<char_type> Name;
-				std::basic_string<char_type> Value;
+				BSLib::string<char_type> Name;
+				BSLib::string<char_type> Value;
 			};
 
 			// finds a current attribute by name, returns 0 if not found
@@ -497,7 +497,7 @@ namespace BSLib
 				if (!name)
 					return 0;
 
-				std::basic_string<char_type> n = name;
+				BSLib::string<char_type> n = name;
 
 				for (int i=0; i<(int)Attributes.size(); ++i)
 					if (Attributes[i].Name == n)
@@ -507,8 +507,8 @@ namespace BSLib
 			}
 
 			// replaces xml special characters in a string and creates a new one
-			std::basic_string<char_type> replaceSpecialCharacters(
-				std::basic_string<char_type>& origstr)
+			BSLib::string<char_type> replaceSpecialCharacters(
+				BSLib::string<char_type>& origstr)
 			{
 				int pos = origstr.findFirst(L'&');
 				int oldPos = 0;
@@ -516,7 +516,7 @@ namespace BSLib
 				if (pos == -1)
 					return origstr;
 
-				std::basic_string<char_type> newstr;
+				BSLib::string<char_type> newstr;
 
 				while(pos != -1 && pos < (int)origstr.size()-2)
 				{
@@ -790,12 +790,12 @@ namespace BSLib
 			ETEXT_FORMAT SourceFormat;   // source format of the xml file
 			ETEXT_FORMAT TargetFormat;   // output format of this parser
 
-			std::basic_string<char_type> NodeName;    // name of the node currently in
-			std::basic_string<char_type> EmptyString; // empty string to be returned by getSafe() methods
+			BSLib::string<char_type> NodeName;    // name of the node currently in
+			BSLib::string<char_type> EmptyString; // empty string to be returned by getSafe() methods
 
 			bool IsEmptyElement;       // is the currently parsed node empty?
 
-			std::vector< std::basic_string<char_type> > SpecialCharacters; // see createSpecialCharacterList()
+			std::vector< BSLib::string<char_type> > SpecialCharacters; // see createSpecialCharacterList()
 
 			std::vector< SAttribute> Attributes; // attributes of current element
 
