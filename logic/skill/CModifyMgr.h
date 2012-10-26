@@ -1,6 +1,7 @@
 #ifndef __LOGIC_SKILL_CMODIFYMGR_H__
 #define __LOGIC_SKILL_CMODIFYMGR_H__
 #include "basedef.h"
+#include "../../io/CXmlExcel.h"
 #include <map>
 
 namespace SKILLEDITOR
@@ -61,6 +62,10 @@ namespace SKILLEDITOR
 		bool rollbackSeq(BSLib::s32 seqID, CCharacterEntity *src, BSLib::s32 type, void *dst);
 
 		bool load(const char* filePath = NULL);
+		bool save(const char* filePath = NULL);
+	private:
+		bool _postLoad(BSLib::CXmlExcel& xmlExcel);
+		bool _postSave(BSLib::CXmlExcel& xmlExcel);
 	private:
 		typedef std::map<BSLib::u32, AttrModifierList *> TModifierList;
 		TModifierList		m_modifierList;

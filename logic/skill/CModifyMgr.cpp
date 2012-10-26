@@ -153,7 +153,47 @@ Exit0:
 Exit0:
 		return false;
 	}
+	bool CModifyMgr::_postLoad(BSLib::CXmlExcel& xmlExcel)
+	{
+		BSLib::CExcelTable * xmlTable = xmlExcel.getTable(0);
+		LOG_PROCESS_ERROR(xmlTable);
 
+		BSLib::s32 skipRowCnt = 2;
+		BSLib::s32 rowCount = xmlTable->rowSize();
+		for(BSLib::s32 i = skipRowCnt; i < rowCount; i++)
+		{
+			BSLib::stringc TempValue;
+			xmlTable->getColumnValue(i, "SeqID", TempValue);
+			BSLib::s32 iTemp = -1;
+			xmlTable->getColumnValue(i, "key1", iTemp);
+
+			i++;
+		}
+		return true;
+Exit0:
+		return false;
+	}
+
+	bool CModifyMgr::_postSave(BSLib::CXmlExcel& xmlExcel)
+	{
+		BSLib::CExcelTable * xmlTable = xmlExcel.getTable(0);
+		LOG_PROCESS_ERROR(xmlTable);
+
+		BSLib::s32 skipRowCnt = 2;
+		BSLib::s32 rowCount = xmlTable->rowSize();
+		for(BSLib::s32 i = skipRowCnt; i < rowCount; i++)
+		{
+			BSLib::stringc TempValue;
+			xmlTable->getColumnValue(i, "SeqID", TempValue);
+			BSLib::s32 iTemp = -1;
+			xmlTable->getColumnValue(i, "key1", iTemp);
+
+			i++;
+		}
+		return true;
+Exit0:
+		return false;
+	}
 	bool CModifyMgr::load(const char* filePath)
 	{
 		BSLib::stringc fileName = "skill_modifierseq.xml";
@@ -163,8 +203,28 @@ Exit0:
 		}
 
 		BSLib::CXmlExcel xmlExcel;
-		xmlExcel.loadFile(fileName);
-		return true;
+		bool bRet = xmlExcel.loadFile(fileName);
+		LOG_PROCESS_ERROR(bRet);
+
+
+		return _postLoad(xmlExcel);
+Exit0:
+		return false;
+	}
+	bool CModifyMgr::save(const char* filePath)
+	{
+		BSLib::stringc fileName = "skill_modifierseq.xml";
+		if (filePath != NULL)
+		{
+			fileName = filePath;
+		}
+
+		BSLib::CXmlExcel xmlExcel;
+		bool bRet = xmlExcel.loadFile(fileName);
+		LOG_PROCESS_ERROR(bRet);
+
+
+		return _postSave(xmlExcel);
 Exit0:
 		return false;
 	}

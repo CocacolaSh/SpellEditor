@@ -14,7 +14,7 @@ namespace BSLib
 		CTableCell(){}
 		~CTableCell(){}
 
-		CELLTYPE & getValue()const {return m_value;}
+		CELLTYPE & getValue(){return m_value;}
 		void setValue(CELLTYPE _value){m_value = _value;}
 
 		CELLTYPE &operator = (CELLTYPE &_value)
@@ -27,7 +27,6 @@ namespace BSLib
 		{
 			return m_value;
 		}
-
 		template <class ValueType>
 		bool getValue(ValueType &_value)const
 		{
@@ -47,7 +46,7 @@ namespace BSLib
 			_value = (ValueType)m_value;
 			return true;
 		}
-	private:
+	protected:
 		CELLTYPE m_value;
 	};
 
@@ -62,7 +61,7 @@ namespace BSLib
 		CTableRow(CTable<TYPE, CELLTYPE, CTableRow> * table, BSLib::s32 columnMax)
 			:m_table(table)
 		{
-			m_cells.resize(columnMax);	
+			m_cells.resize(columnMax, NULL);	
 			for (BSLib::s32 i = 0; i < columnMax; ++i)
 			{
 				m_cells[i] = _createCell();
@@ -115,7 +114,7 @@ namespace BSLib
 			return true;
 		}
 
-	private:
+	protected:
 		CTable<TYPE, CELLTYPE, CTableRow> *m_table;
 		std::vector<CELLTYPE *>	m_cells;
 	};
@@ -165,7 +164,7 @@ namespace BSLib
 		}
 		BSLib::s32 getColumnIndex(const BSLib::stringc name) const
 		{
-			std::hash_map<BSLib::stringc, BSLib::s32>::iterator begIter = m_columnNameHash.find(name);
+			stdext::hash_map<BSLib::stringc, BSLib::s32>::const_iterator begIter = m_columnNameHash.find(name);
 			if (begIter == m_columnNameHash.end())
 			{
 				return -1;
@@ -240,7 +239,7 @@ namespace BSLib
 		}
 
 		template <class VALUETYPE>
-		bool getColumnValue(BSLib::s32 rowIndex, BSLib::stringc& columnName, VALUETYPE& value)const
+		bool getColumnValue(BSLib::s32 rowIndex, const BSLib::stringc& columnName, VALUETYPE& value)const
 		{
 			BSLib::s32 columnIndex = getColumnIndex(columnName);
 			return getColumnValue(rowIndex, columnIndex, value);
