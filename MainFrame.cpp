@@ -66,7 +66,7 @@ bool CMainFrame::initPanel()
 	//m_splitterWindow->SetSashGravity(1.0);
 
 	m_leftWindow = new CTreeView(m_splitterWindow, ESPELL_TREE_CTRL_ID,  wxDefaultPosition, wxDefaultSize,
-		wxTR_DEFAULT_STYLE | wxTR_HAS_BUTTONS | wxTR_SINGLE);
+		wxTR_HIDE_ROOT | wxTR_DEFAULT_STYLE | wxTR_HAS_BUTTONS | wxTR_SINGLE);
 	m_leftWindow->initTreeView();
 
 	m_rightWindow = new CListView(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxBORDER_THEME);

@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories=".\..\..\lib\vc_lib\mswud,.\..\..\include,.,.\..\..\samples"
+				AdditionalIncludeDirectories=".\..\..\lib\vc_lib\mswud;&quot;.\Visual Leak Detector\include&quot;;.\..\..\include;.;.\..\..\samples"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;__WXMSW__"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,9 +63,10 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="wxmsw29ud_adv.lib wxmsw29ud_core.lib wxbase29ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib wininet.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories=".\..\..\lib\vc_lib"
+				AdditionalLibraryDirectories="&quot;.\Visual Leak Detector\lib\Win32&quot;;.\..\..\lib\vc_lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool

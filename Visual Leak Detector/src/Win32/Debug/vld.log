@@ -1,0 +1,48 @@
+﻿生成启动时间为 2012/10/27 9:54:48。
+     1>项目“F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\vld.vcxproj”在节点 2 上(rebuild 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Isetup /ZI /nologo /W4 /WX- /Od /Oy- /D _DEBUG /D _USRDLL /D WIN32 /D _WIN32_WINNT=0x0502 /D _WINDLL /D _UNICODE /D UNICODE /GF- /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.pch" /Fo"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\\" /Fd"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vc100.pdb" /Gd /TP /analyze /errorReport:prompt stdafx.cpp
+     1>cl : 命令行 warning D9040: 忽略“/analyze”选项；“代码分析”警告在此版本的编译器中不可用
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Isetup /ZI /nologo /W4 /WX- /Od /Oy- /D _DEBUG /D _USRDLL /D WIN32 /D _WIN32_WINNT=0x0502 /D _WINDLL /D _UNICODE /D UNICODE /GF- /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.pch" /Fo"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\\" /Fd"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vc100.pdb" /Gd /TP /analyze /errorReport:prompt callstack.cpp dllspatches.cpp ntapi.cpp utility.cpp vld.cpp vldapi.cpp vldheap.cpp vld_hooks.cpp
+     1>cl : 命令行 warning D9040: 忽略“/analyze”选项；“代码分析”警告在此版本的编译器中不可用
+         callstack.cpp
+         dllspatches.cpp
+         ntapi.cpp
+         utility.cpp
+         vld.cpp
+         vldapi.cpp
+         vldheap.cpp
+         vld_hooks.cpp
+         正在生成代码...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /Isetup /nologo /fo"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.res" vld.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.dll" /NOLOGO psapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.pdb" /TLBID:1 /BASE:"0x03200000" /DYNAMICBASE:NO /NXCOMPAT /IMPLIB:"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.lib" /MACHINE:X86 /DLL "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.res"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\callstack.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\dllspatches.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\ntapi.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\stdafx.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\utility.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vldapi.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vldheap.obj"
+         "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_hooks.obj"
+            正在创建库 F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.lib 和对象 F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.exp
+         vld.vcxproj -> F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.dll;#2" /manifest "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.dll.intermediate.manifest" vld.dll.dependency.x86.manifest
+       PostBuildEvent:
+         copy "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld_x86.lib" "F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.lib" /y
+         :VCEnd
+         已复制         1 个文件。
+       FinalizeBuildStatus:
+         正在删除文件“F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.unsuccessfulbuild”。
+         正在对“F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\Win32\Debug\vld.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“F:\project\wxWidgets-2.9.4\samples\SpellEditor\Visual Leak Detector\src\vld.vcxproj”(rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:08.36
