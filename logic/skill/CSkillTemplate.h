@@ -2,8 +2,10 @@
 #define __LOGIC_SKILL_CSKILLTEMPLATE_H__
 #include "basedef.h"
 #include "evtDef.h"
+#include "ConditionMgr.h"
 #include <vector>
 #include <string>
+#include "colaString.h"
 #include <map>
 
 namespace GSLib
@@ -80,6 +82,117 @@ namespace SKILLEDITOR
 		ESkillStrVar_Count,
 	};
 
+	enum ESkillAttackEffect
+	{
+		ESkillAttackEffect_Invalid = -1,
+		ESkillAttackEffect_Begin,
+		ESkillAttackEffect_Modifier = ESkillAttackEffect_Begin,
+		ESkillAttackEffect_Spurt,
+		ESkillAttackEffect_Fire,
+		ESkillAttackEffect_Count,
+	};
+
+	class CSkillAttackEffect
+	{
+	public:
+		CSkillAttackEffect(){}
+		CSkillAttackEffect(BSLib::f32 time, ESkillAttackEffect type)
+		{
+			m_time = time;
+			m_type = type;
+		}
+		virtual ~CSkillAttackEffect(){}
+		
+		bool operator < (const CSkillAttackEffect &rhs)const
+		{
+			return m_time < rhs.m_time;
+		}
+		ESkillAttackEffect getAttackEffect()const {return m_type;}
+		BSLib::f32 getTime(){return m_time;}
+	protected:
+		BSLib::f32			m_time;
+		ESkillAttackEffect m_type;
+	};
+	class CSkillAttackEffectModifier : public CSkillAttackEffect
+	{
+	public:
+		CSkillAttackEffectModifier()
+		{
+			m_type = ESkillAttackEffect_Modifier;
+		}
+		CSkillAttackEffectModifier(BSLib::f32 time, BSLib::u32 modifierSeq)
+			:CSkillAttackEffect(time, ESkillAttackEffect_Modifier), m_modifierSeq(modifierSeq)
+		{
+			//
+		}
+		
+		~CSkillAttackEffectModifier(){}
+	protected:
+		BSLib::u32 m_modifierSeq;
+	};
+	class CSkillAttackEffectSpurt : public CSkillAttackEffect
+	{
+	public:
+		CSkillAttackEffectSpurt()
+		{
+			m_type = (ESkillAttackEffect_Spurt);
+		}
+		CSkillAttackEffectSpurt(BSLib::f32 time, BSLib::f32 timeSpan, BSLib::f32 distanceX, BSLib::f32 distanceY, BSLib::f32 distanceZ, bool stepDown)
+			:CSkillAttackEffect(time, ESkillAttackEffect_Spurt), m_timeSpan(timeSpan), m_distanceX(distanceX), m_distanceY(distanceY), m_distanceZ(distanceZ), m_stepDown(stepDown)
+		{
+			
+		}
+	protected:
+		BSLib::f32	m_timeSpan;
+		BSLib::f32	m_distanceX;
+		BSLib::f32	m_distanceY;
+		BSLib::f32	m_distanceZ;
+		bool		m_stepDown;
+	};
+	class CSkillAttackEffectFire : public CSkillAttackEffect
+	{
+	public:
+		CSkillAttackEffectFire()
+		{
+			m_type = (ESkillAttackEffect_Fire);
+		}
+		CSkillAttackEffectFire(BSLib::f32 time, BSLib::u32 entityType, BSLib::stringc missile, BSLib::u32 skillID, BSLib::u32 skillLevel)
+			:CSkillAttackEffect(time, ESkillAttackEffect_Fire), m_entityType(entityType), m_missile(missile), m_skillID(skillID), m_skillLevel(skillLevel)
+		{
+			m_type = (ESkillAttackEffect_Fire);
+		}
+	protected:
+		BSLib::u32			m_entityType;
+		BSLib::stringc 		m_missile;
+		BSLib::u32			m_skillID;
+		BSLib::u32			m_skillLevel;
+	};
+
+	class CSkillAttackPeriodInfo
+	{
+	public:
+		virtual ~CSkillAttackPeriodInfo(){}
+
+		bool init(BSLib::s32 collisionGroupID, BSLib::stringc attackInfoName, BSLib::s32 breakArmorValue)
+		{
+			m_collisionGroupID = collisionGroupID;
+			m_attackInfoName = attackInfoName;
+			m_breadArmorValue = breakArmorValue;
+			return true;
+		}
+
+		void setChargeLevel(BSLib::u8 chargeLevel){m_chargeLevel = chargeLevel;}
+		void setPeriodID(BSLib::u8 periodID){m_periodID = periodID;}
+	private:
+		BSLib::stringc		m_attackInfoName;
+		BSLib::u32			m_collisionGroupID;
+		BSLib::s32			m_breadArmorValue;
+		BSLib::u8			m_chargeLevel;
+		BSLib::u8			m_periodID;
+
+		BSLib::f32			m_startTime;
+		BSLib::f32			m_endTime;
+	};
 	class CSkillEntry
 	{
 	public:
@@ -91,8 +204,12 @@ namespace SKILLEDITOR
 		std::vector<BSLib::u64>			m_castEnhancement;
 		std::vector<BSLib::u64>			m_attackEnhancement;
 
+		SCondition						m_conditionChecker[EConditionType_Count];
+
 		
 		BSLib::u32						m_seq[EModifySkillTime_Count];
+		CSkillAttackEffect *			m_attackEffect[ESkillAttackEffect_Count];
+		CSkillAttackPeriodInfo			m_attackPeriods[EModifySkillTime_Count];
 	};
 
 	enum ESkillScenarioType

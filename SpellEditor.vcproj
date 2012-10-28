@@ -314,6 +314,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\logic\skill\ConditionMgr.h"
+					>
+				</File>
+				<File
 					RelativePath=".\logic\skill\CPeriodEffect.cpp"
 					>
 				</File>
@@ -371,6 +375,10 @@
 				</File>
 				<File
 					RelativePath=".\logic\skill\PeriodEffect_def.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\SkillDef.h"
 					>
 				</File>
 			</Filter>
