@@ -282,6 +282,22 @@
 					>
 				</File>
 				<File
+					RelativePath=".\logic\skill\CBullet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CBullet.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CCheckerMgr.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CCheckerMgr.h"
+					>
+				</File>
+				<File
 					RelativePath=".\logic\skill\CEot.cpp"
 					>
 				</File>
@@ -319,6 +335,22 @@
 				</File>
 				<File
 					RelativePath=".\logic\skill\CSkillEvt.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CSkillMgr.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CSkillMgr.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CSkillTemplate.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\skill\CSkillTemplate.h"
 					>
 				</File>
 				<File
@@ -383,6 +415,14 @@
 				</File>
 				<File
 					RelativePath=".\logic\attr\CCharacterEntity.h"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\CheckerFunc.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\logic\attr\CheckerFunc.h"
 					>
 				</File>
 				<File

@@ -200,6 +200,9 @@ namespace BSLib
 			m_name = "";
 			m_value = "";
 		}
+		virtual ~SNode();
+
+		bool clear();
 		BSLib::stringc m_name;
 		BSLib::stringc m_value;
 		std::vector<SNodeAttr> m_nodeAttr;
@@ -208,6 +211,24 @@ namespace BSLib
 		bool loadFile(IrrXMLReader *xmlReader);
 	};
 
+	SNode::~SNode()
+	{
+		clear();
+
+	}
+	bool SNode::clear()
+	{
+		m_nodeAttr.clear();
+		std::vector<SNode*>::iterator begItr = m_subNodes.begin();
+
+		while(begItr != m_subNodes.end())
+		{
+			delete (*begItr);
+			begItr = m_subNodes.erase(begItr);
+		}
+		m_subNodes.clear();
+		return true;
+	}
 	bool SNode::loadFile(IrrXMLReader *xmlReader)
 	{
 		LOG_PROCESS_ERROR(xmlReader);
@@ -277,14 +298,25 @@ Exit0:
 	{
 	public:
 		CExcelCell(){}
-		~CExcelCell(){}
+		~CExcelCell()
+		{
+			clear();
+		}
+
+		bool clear()
+		{
+			m_attrs.clear();
+			m_dataAttrs.clear();
+			return true;
+		}
 		bool loadFile(IrrXMLReader *xmlReader)
 		{
 			BSLib::s32 attrCount = xmlReader->getAttributeCount();
 			for (BSLib::s32 i = 0; i < attrCount; ++i)
 			{
-				m_attrs.push_back(SNodeAttr(xmlReader->getAttributeName(i), 
-					xmlReader->getAttributeValue(i)));
+				SNodeAttr nodeAttr(xmlReader->getAttributeName(i), 
+					xmlReader->getAttributeValue(i));
+				m_attrs.push_back(nodeAttr);
 			}
 			BSLib::stringc name = "";
 			while (xmlReader->read())
@@ -345,7 +377,16 @@ Exit0:
 	{
 	public:
 		CExcelRow(CExcelTable* table, BSLib::s32 columnSize):CExcelTableRow(table, columnSize){}
-		~CExcelRow(){}
+		~CExcelRow()
+		{
+			clear();
+		}
+
+		bool clear()
+		{
+			m_attrs.clear();
+			return true;
+		}
 		bool setCell(BSLib::s32 index, BSLib::stringc &_value)
 		{
 			LOG_PROCESS_ERROR(index >= 0 && index < CExcelTableRow::m_cells.size());
@@ -444,7 +485,15 @@ Exit0:
 	{
 	public:
 		CColumn(){}
-		~CColumn(){}
+		~CColumn()
+		{
+			clear();
+		}
+		bool clear()
+		{
+			m_attrs.clear();
+			return true;
+		}
 		bool loadFile(IrrXMLReader *xmlReader)
 		{
 			LOG_PROCESS_ERROR(xmlReader);
@@ -472,7 +521,17 @@ Exit0:
 			m_columns.resize(columnSize);
 			m_headerRow = NULL;
 		}
-		~CExcelSheet(){}
+		~CExcelSheet()
+		{
+			clear();
+		}
+
+		bool clear()
+		{
+			m_columns.clear();
+			m_tableAttrs.clear();
+			return true;
+		}
 		virtual CTableRow<BSLib::stringc, CXmlExcelTableCell> *_createRow()
 		{
 			return new CExcelRow(this, CExcelTable::columnSize());
@@ -619,13 +678,10 @@ Exit0:
 		bool clear()
 		{
 			std::vector<CExcelSheet *>::iterator begIter = m_excelSheets.begin();
-			std::vector<CExcelSheet *>::iterator endIter = m_excelSheets.end();
-			std::vector<CExcelSheet *>::iterator tempIter;
-			while(begIter != endIter)
+			while(begIter != m_excelSheets.end())
 			{
-				tempIter = begIter++;
-				SAFE_DELETE(*tempIter);
-				m_excelSheets.erase(tempIter);
+				delete (*begIter);
+				begIter = m_excelSheets.erase(begIter);
 			}
 			return true;
 		}
@@ -720,8 +776,10 @@ Repeat:
 				break;
 			}
 		}
+		delete xmlReader;
 		return true;
 Exit0:
+		SAFE_DELETE(xmlReader);
 		return false;
 	}
 

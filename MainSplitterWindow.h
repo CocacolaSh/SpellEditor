@@ -68,6 +68,10 @@ public:
 	void OnItemMenu(wxTreeEvent& event);
 private:
 	BSLib::u16		m_imageSize;
+
+	wxTreeItemId eotRootId;
+	wxTreeItemId auraRootId;
+	wxTreeItemId skillRootId;
 private:
 	DECLARE_EVENT_TABLE()
 };

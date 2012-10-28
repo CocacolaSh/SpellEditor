@@ -156,13 +156,13 @@ void CTreeView::createImageSet(BSLib::u16 size)
 	int image = 0;// CTreeView::TreeCtrlIcon_Folder;
 
 	wxTreeItemId rootID = AddRoot(wxT(""), image, image, NULL);
-	wxTreeItemId skillRootId = AppendItem(rootID, wxT("技能"), image, image, new TreeItemData(wxT("Root item")));
+	skillRootId = AppendItem(rootID, wxT("技能"), image, image, new TreeItemData(wxT("Root item")));
 	//AddRoot(wxT("Root1"), image, image, new TreeItemData(wxT("Root item")));
 	wxTreeItemId id = AppendItem(skillRootId, wxT("Child"), image, image, new TreeItemData(wxT("Child item1")));
 	AppendItem(skillRootId, wxT("Child2"), image, image, new TreeItemData(wxT("Child item2")));
 
-	wxTreeItemId eotRootId = AppendItem(rootID, wxT("EOT"), image, image, new TreeItemData(wxT("Root item")));
-	wxTreeItemId auraRootId = AppendItem(rootID, wxT("Aura"), image, image, new TreeItemData(wxT("Root item")));
+	eotRootId = AppendItem(rootID, wxT("EOT"), image, image, new TreeItemData(wxT("Root item")));
+	auraRootId = AppendItem(rootID, wxT("Aura"), image, image, new TreeItemData(wxT("Root item")));
 }
 
 

@@ -8,7 +8,7 @@
  xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Created>2006-09-13T11:21:51Z</Created>
-  <LastSaved>2012-08-23T02:13:37Z</LastSaved>
+  <LastSaved>2012-10-28T06:42:07Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -21,7 +21,6 @@
   <WindowTopY>90</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
-  <FutureVer>11</FutureVer>
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
@@ -32,7 +31,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s16">
+  <Style ss:ID="s62">
    <NumberFormat ss:Format="@"/>
   </Style>
  </Styles>
@@ -63,14 +62,14 @@
    <Column ss:AutoFitWidth="0" ss:Width="71.25" ss:Span="1"/>
    <Column ss:Index="49" ss:AutoFitWidth="0" ss:Width="65.25"/>
    <Column ss:Index="66" ss:AutoFitWidth="0" ss:Width="127.5"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ID</Data></Cell>
     <Cell><Data ss:Type="String">SkillID</Data></Cell>
     <Cell><Data ss:Type="String">SkillName</Data></Cell>
     <Cell><Data ss:Type="String">SkillIcon</Data></Cell>
     <Cell><Data ss:Type="String">SkillDescription</Data></Cell>
     <Cell><Data ss:Type="String">SkillLevel</Data></Cell>
-    <Cell><Data ss:Type="String">MountType</Data></Cell>
+    <Cell><Data ss:Type="String">ScenarioType</Data></Cell>
     <Cell><Data ss:Type="String">SeqAfterLearn</Data></Cell>
     <Cell><Data ss:Type="String">SeqAfterEquip</Data></Cell>
     <Cell><Data ss:Type="String">LoopFx</Data></Cell>
@@ -131,12 +130,12 @@
     <Cell><Data ss:Type="String">CloseAttackEventTime</Data></Cell>
     <Cell><Data ss:Type="String">CloseAttackEvent</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ID</Data></Cell>
     <Cell><Data ss:Type="String">技能ID</Data></Cell>
     <Cell><Data ss:Type="String">技能名称</Data></Cell>
     <Cell><Data ss:Type="String">图标</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">描述</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">描述</Data></Cell>
     <Cell><Data ss:Type="String">技能等级</Data></Cell>
     <Cell><Data ss:Type="String">应用场景</Data></Cell>
     <Cell><Data ss:Type="String">学习后调用</Data></Cell>
@@ -199,7 +198,7 @@
     <Cell><Data ss:Type="String">收招特殊作用时间</Data></Cell>
     <Cell><Data ss:Type="String">收招特殊作用段</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">0</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -267,13 +266,13 @@
     <Cell><Data ss:Type="Number">64</Data></Cell>
     <Cell><Data ss:Type="Number">65</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="Number">10010</Data></Cell>
     <Cell><Data ss:Type="Number">10010</Data></Cell>
    </Row>
-   <Row ss:Index="7">
-    <Cell ss:Index="3" ss:StyleID="s16"/>
+   <Row ss:Index="7" ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="s62"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -282,6 +281,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -289,11 +289,11 @@
     <VerticalResolution>200</VerticalResolution>
    </Print>
    <Selected/>
+   <LeftColumnVisible>35</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>23</ActiveCol>
+     <ActiveCol>62</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -303,6 +303,7 @@
  <Worksheet ss:Name="Sheet2">
   <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+   <Row ss:AutoFitHeight="0"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -310,6 +311,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -323,6 +325,7 @@
  <Worksheet ss:Name="Sheet3">
   <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="54" ss:DefaultRowHeight="13.5">
+   <Row ss:AutoFitHeight="0"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -330,6 +333,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
