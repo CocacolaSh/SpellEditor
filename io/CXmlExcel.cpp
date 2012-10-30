@@ -63,6 +63,13 @@ namespace BSLib
 		m_value = ss.str().c_str();
 		return true;
 	}
+	bool CXmlExcelCell::setString(std::string &_value)
+	{
+		std::ostringstream ss;
+		ss << _value;
+		m_value = ss.str().c_str();
+		return true;
+	}
 	bool CXmlExcelCell::getBoolean(bool &_value)
 	{
 		_value = atoi(m_value.c_str());
@@ -104,6 +111,11 @@ namespace BSLib
 		return true;
 	}
 
+	bool CXmlExcelCell::getString(std::string &_value)
+	{
+		_value = std::string(m_value.c_str());
+		return true;
+	}
 	CXmlExcelCell &CXmlExcelCell::operator = (bool &_value)
 	{
 		setBoolean(_value);
@@ -144,6 +156,11 @@ namespace BSLib
 		setString(_value);
 		return *this;
 	}
+	CXmlExcelCell &CXmlExcelCell::operator = (std::string &_value)
+	{
+		setString(_value);
+		return *this;
+	}
 	template <> bool CXmlExcelCell::getValue(bool &_value)
 	{
 		return getBoolean(_value);
@@ -176,7 +193,10 @@ namespace BSLib
 	{
 		return getString(_value);
 	}
-	
+	template <> bool CXmlExcelCell::getValue(std::string &_value)
+	{
+		return getString(_value);
+	}
 	struct SNodeAttr
 	{
 		BSLib::stringc m_name;

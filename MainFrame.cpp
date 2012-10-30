@@ -32,7 +32,21 @@ void CMainFrame::OnOpenFile(wxCommandEvent& event)
 	msg.Printf(wxT("openFile"));
 	wxMessageBox(msg, wxT("Open"), wxOK, this);
 }
+void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
+{
+	wxString selText = wxT("");
+	LOG_PROCESS_ERROR (m_leftWindow && m_rightWindow);
 
+	wxTreeItemId selItem = m_leftWindow->GetSelection();
+
+	LOG_PROCESS_ERROR (selItem.IsOk());
+
+	selText = m_leftWindow->GetItemText(selItem);
+	wxLogMessage(selText);
+	return;
+Exit0:
+	return;
+}
 void CMainFrame::OnSize(wxSizeEvent& event)
 {
 	wxSize size = GetClientSize();

@@ -4,6 +4,28 @@
 
 namespace SKILLEDITOR
 {
+	CSkillEntry::CSkillEntry()
+	{
+		memset(m_intData, 0, sizeof(m_intData));
+		memset(m_conditionChecker, 0, sizeof(m_conditionChecker));
+		memset(m_seq, 0, sizeof(m_seq));
+	}
+
+	CSkillEntry::~CSkillEntry()
+	{
+		clear();
+	}
+
+	bool CSkillEntry::clear()
+	{
+		m_castEnhancement.clear();
+		m_attackEnhancement.clear();
+		for (BSLib::s32 i = 0; i < ESkillAttackEffect_Count; i++)
+		{
+			SAFE_DELETE(m_attackEffect[i]);
+		}
+		return true;
+	}
 	CSkillTemplate::CSkillTemplate()
 	{
 		memset(m_skillEntrys, NULL, sizeof(m_skillEntrys));

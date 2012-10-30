@@ -37,22 +37,45 @@ void CMainSplitterWindow::OnUnsplitEvent(wxSplitterEvent& event)
 {
 	//
 }
+#define MENU_LINK(name) EVT_MENU(CTreeView_##name, CMainFrame::On##name)
 
 BEGIN_EVENT_TABLE(CTreeView, wxTreeCtrl)
 	EVT_TREE_ITEM_EXPANDED(ESPELL_TREE_CTRL_ID, CTreeView::OnItemExpanded)
 	EVT_TREE_ITEM_EXPANDING(ESPELL_TREE_CTRL_ID, CTreeView::OnItemExpanding)
-	EVT_TREE_ITEM_MENU(ESPELL_TREE_CTRL_ID, CTreeView::OnItemMenu)
+	EVT_TREE_ITEM_MENU(ESPELL_TREE_CTRL_ID, CTreeView::OnTreeRightClick)
+	EVT_TREE_ITEM_RIGHT_CLICK(ESPELL_TREE_CTRL_ID, CTreeView::OnItemRightClicked)
+
+	MENU_LINK(CreateItemOnListView)
 END_EVENT_TABLE()
 void CTreeView::OnItemExpanded(wxTreeEvent& event)
 {
+	event.Skip();
+}
+void CTreeView::OnItemRightClicked(wxTreeEvent& event)
+{
+	wxTreeItemId clickID = event.GetItem();
+	wxPoint clientpt = event.GetPoint();
+	wxPoint screenpt = /*ClientToScreen*/(clientpt);
+
+	if (clickID == skillRootId ||
+		clickID == eotRootId ||
+		clickID == auraRootId)
+	{
+		ShowMenu(clickID, screenpt);
+	}
 	event.Skip();
 }
 void CTreeView::OnItemExpanding(wxTreeEvent& event)
 {
 	event.Skip();
 }
-void CTreeView::OnItemMenu(wxTreeEvent& event)
+void CTreeView::OnTreeRightClick(wxTreeEvent& event)
 {
+	if (event.GetItem().IsOk())
+	{
+		event.Skip();
+		return;
+	}
 	wxTreeItemId itemId = event.GetItem();
 	wxCHECK_RET( itemId.IsOk(), "should have a valid item" );
 
@@ -65,6 +88,27 @@ void CTreeView::OnItemMenu(wxTreeEvent& event)
 
 	//ShowMenu(itemId, clientpt);
 	event.Skip();
+}
+
+void CTreeView::ShowMenu(wxTreeItemId id, const wxPoint& pt)
+{
+	wxString title;
+	if ( id.IsOk() )
+	{
+		title << wxT("Create ") << GetItemText(id);
+	}
+	else
+	{
+		title = wxT("Menu for no particular item");
+	}
+
+	wxMenu menu;
+	menu.Append(CTreeView_CreateItemOnListView, title);
+	//menu.AppendSeparator();
+	//menu.Append(TreeTest_Highlight, wxT("&Highlight item"));
+	//menu.Append(TreeTest_Dump, wxT("&Dump"));
+
+	PopupMenu(&menu, pt);
 }
 CTreeView::CTreeView(wxWindow *parent, const wxWindowID id,
 							 const wxPoint& pos, const wxSize& size,

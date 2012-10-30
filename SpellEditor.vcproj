@@ -63,7 +63,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="wxmsw29ud_adv.lib wxmsw29ud_core.lib wxbase29ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib wininet.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;.\Visual Leak Detector\lib\Win32&quot;;.\..\..\lib\vc_lib"
+				AdditionalLibraryDirectories=".\..\..\lib\vc_lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				DataExecutionPrevention="0"

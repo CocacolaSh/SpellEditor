@@ -20,6 +20,7 @@ namespace BSLib
 		bool getFloat(BSLib::f32 &_value);
 		bool getDouble(BSLib::f64 &_value);
 		bool getString(BSLib::stringc &_value);
+		bool getString(std::string &_value);
 
 		bool getBoolean()
 		{
@@ -76,6 +77,7 @@ namespace BSLib
 		bool setFloat(BSLib::f32 &_value);
 		bool setDouble(BSLib::f64 &_value);
 		bool setString(BSLib::stringc &_value);
+		bool setString(std::string &_value);
 
 
 		CXmlExcelCell &operator = (bool &_value);
@@ -86,6 +88,7 @@ namespace BSLib
 		CXmlExcelCell &operator = (BSLib::f32 &_value);
 		CXmlExcelCell &operator = (BSLib::f64 &_value);
 		CXmlExcelCell &operator = (BSLib::stringc &_value);
+		CXmlExcelCell &operator = (std::string &_value);
 
 		template <class TYPE>
 		bool getValue(TYPE & _value);
@@ -109,6 +112,7 @@ namespace BSLib
 	template <> bool CXmlExcelCell::getValue(BSLib::f32 &_value);
 	template <> bool CXmlExcelCell::getValue(BSLib::f64 &_value);
 	template <> bool CXmlExcelCell::getValue(BSLib::stringc &_value);
+	template <> bool CXmlExcelCell::getValue(std::string &_value);
 
 	class CExcelBook;
 

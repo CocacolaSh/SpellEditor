@@ -39,6 +39,11 @@ public:
 private:
 	wxString m_desc;
 };
+
+enum ETreeViewID
+{
+	CTreeView_CreateItemOnListView = 0,
+};
 class CTreeView : public wxTreeCtrl
 {
 public:
@@ -65,7 +70,11 @@ public:
 
 	void OnItemExpanded(wxTreeEvent& event);
 	void OnItemExpanding(wxTreeEvent& event);
-	void OnItemMenu(wxTreeEvent& event);
+	void OnTreeRightClick(wxTreeEvent& event);
+	void OnItemRightClicked(wxTreeEvent& event);
+	
+
+	void ShowMenu(wxTreeItemId id, const wxPoint& pt);
 private:
 	BSLib::u16		m_imageSize;
 
@@ -87,6 +96,8 @@ public:
 	void initWithReportItems();
 
 	void OnSize(wxSizeEvent& event);
+
+	bool CreateList();
 private:
 	static BSLib::u16	sm_nameItemWidth;
 	DECLARE_EVENT_TABLE()

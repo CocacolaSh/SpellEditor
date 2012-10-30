@@ -32,6 +32,8 @@ public:
 	void OnButtonOk(wxCommandEvent& event);
 
 	void OnSize(wxSizeEvent& event);
+
+	void OnCreateItemOnListView(wxCommandEvent& event);
 private:
 	DECLARE_EVENT_TABLE()
 

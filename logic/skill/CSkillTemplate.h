@@ -199,6 +199,8 @@ namespace SKILLEDITOR
 		CSkillEntry();
 		~CSkillEntry();
 
+		bool clear();
+
 		BSLib::s32						m_intData[ESkillIntVar_Count];
 		std::string						m_strData[ESkillStrVar_Count];
 		std::vector<BSLib::u64>			m_castEnhancement;

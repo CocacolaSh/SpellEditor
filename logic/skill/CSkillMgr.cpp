@@ -104,7 +104,7 @@ Exit0:
 			xmlTable->getColumnValue(i, "ScenarioType", pSkillEntry->m_intData[ESkillIntVar_ScenarioType]);
 			xmlTable->getColumnValue(i, "SeqAfterLearn",  pSkillEntry->m_intData[ESkillIntVar_AtLearnSeqs]);
 			xmlTable->getColumnValue(i, "SeqAfterEquip", pSkillEntry->m_intData[ESkillIntVar_AtEquipSeqs]);
-			xmlTable->getColumnValue(i, "LoopFx",  pSkillEntry->m_strData[ESkillStrVar_LoopFX]);
+			//xmlTable->getColumnValue(i, "LoopFx",  pSkillEntry->m_strData[ESkillStrVar_LoopFX]);
 			xmlTable->getColumnValue(i, "ChiLevel", pSkillEntry->m_intData[ESkillIntVar_ChargeLevel]);
 			xmlTable->getColumnValue(i, "IsElite",  pSkillEntry->m_intData[ESkillIntVar_IsElite]);
 			xmlTable->getColumnValue(i, "IsEmblem",  pSkillEntry->m_intData[ESkillIntVar_IsEmblem]);
@@ -120,12 +120,12 @@ Exit0:
 			xmlTable->getColumnValue(i, "CoolDownTime", pSkillEntry->m_intData[ESkillIntVar_CoolDownTime]);
 			xmlTable->getColumnValue(i, "CoolDownGroup",  pSkillEntry->m_intData[ESkillIntVar_GlobalCDType]);
 			xmlTable->getColumnValue(i, "CategoryType", pSkillEntry->m_intData[ESkillIntVar_CategoryType]);
-			xmlTable->getColumnValue(i, "CategoryVariable",  pSkillEntry->m_strData[ESkillIntVar_CategoryVar]);
+			//xmlTable->getColumnValue(i, "CategoryVariable",  pSkillEntry->m_strData[ESkillIntVar_CategoryVar]);
 			xmlTable->getColumnValue(i, "IsAutoFaceTarget", pSkillEntry->m_intData[ESkillIntVar_IsAutoFaceTarget]);
 
 			{
 				std::string requireNotInCommonState = "";
-				xmlTable->getColumnValue(i, "RequireNotInCommonState", requireNotInCommonState);
+				//xmlTable->getColumnValue(i, "RequireNotInCommonState", requireNotInCommonState);
 				if (requireNotInCommonState != "")
 				{
 					std::string::size_type lastPos = 0;
@@ -161,11 +161,11 @@ Exit0:
 				}
 			}
 			xmlTable->getColumnValue(i, "CastTime",  pSkillEntry->m_intData[ESkillIntVar_CatingTime]);
-			xmlTable->getColumnValue(i, "CastTake",  pSkillEntry->m_strData[ESkillStrVar_CastingPose]);
+			//xmlTable->getColumnValue(i, "CastTake",  pSkillEntry->m_strData[ESkillStrVar_CastingPose]);
 			{
 				//add cast enhancement
 				std::string enhancementStr = "";
-				xmlTable->getColumnValue(i, "CastEnhancement", enhancementStr);
+				//xmlTable->getColumnValue(i, "CastEnhancement", enhancementStr);
 				StrToUInt64Vector(enhancementStr, pSkillEntry->m_castEnhancement);
 			}
 
@@ -173,12 +173,12 @@ Exit0:
 			xmlTable->getColumnValue(i, "AttackSTake",  pSkillEntry->m_strData[ESkillStrVar_AttackingPos]);
 			{
 				std::string enhancementStr = "";
-				xmlTable->getColumnValue(i, "AttackEnhancement", enhancementStr);
+				//xmlTable->getColumnValue(i, "AttackEnhancement", enhancementStr);
 				StrToUInt64Vector(enhancementStr, pSkillEntry->m_attackEnhancement);
 			}
 
 			xmlTable->getColumnValue(i, "CloseAttackTime",  pSkillEntry->m_intData[ESkillIntVar_CloseAttackTime]);
-			xmlTable->getColumnValue(i, "CloseAttackSTake",  pSkillEntry->m_strData[ESkillStrVar_CloseAttackPos]);
+			//xmlTable->getColumnValue(i, "CloseAttackSTake",  pSkillEntry->m_strData[ESkillStrVar_CloseAttackPos]);
 			
 
 			xmlTable->getColumnValue(i, "CastArmor",  pSkillEntry->m_intData[ESkillIntVar_CastArmor]);
