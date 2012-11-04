@@ -19,6 +19,18 @@ enum
 	ESPELL_TREE_CTRL_ID = 1,
 	ESPELL_LIST_CTRL_ID,
 };
+
+enum ECreateItemType
+{
+	ECreateItemType_Skill,
+	ECreateItemType_Aura,
+	ECreateItemType_Eot,
+};
+
+enum ETreeViewID
+{
+	CTreeView_CreateItemOnListView = 100,
+};
 class CMainFrame : public wxFrame
 {
 public:

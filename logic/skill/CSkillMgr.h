@@ -4,15 +4,27 @@
 #include "../../io/CXmlExcel.h"
 #include "CSkillTemplate.h"
 #include <map>
+#include <vector>
 
 namespace SKILLEDITOR
 {
+	typedef struct _SListItemShowData
+	{
+		BSLib::stringc showName;
+		void *reserved;
+	}SListItemShowData;
+
 	class CSkillMgr
 	{
-	public:
+	
 		CSkillMgr();
 		~CSkillMgr();
-
+	public:
+		static CSkillMgr& getInstance()
+		{
+			static CSkillMgr _sSkillMgr;
+			return _sSkillMgr;
+		}
 		bool clear();
 
 		bool load(const char* filePath = NULL);
@@ -24,6 +36,11 @@ namespace SKILLEDITOR
 		typedef std::map<BSLib::s64, CSkillTemplate> TSKILLMAP;
 		CSkillEntry*		m_pEntrys;
 		TSKILLMAP m_skillMgrMap;
+
+		std::vector <SListItemShowData> m_showData;
+	public:
+		std::vector <SListItemShowData> &getShowData(){return m_showData;}
 	};
+	#define  sSkillMgr CSkillMgr::getInstance()
 }
 #endif

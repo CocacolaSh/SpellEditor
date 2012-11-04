@@ -40,10 +40,7 @@ private:
 	wxString m_desc;
 };
 
-enum ETreeViewID
-{
-	CTreeView_CreateItemOnListView = 0,
-};
+
 class CTreeView : public wxTreeCtrl
 {
 public:
@@ -75,6 +72,10 @@ public:
 	
 
 	void ShowMenu(wxTreeItemId id, const wxPoint& pt);
+
+	wxTreeItemId getSkillRootID(){return skillRootId;}
+	wxTreeItemId getAuraRootID(){return auraRootId;}
+	wxTreeItemId getEotRootID(){return eotRootId;}
 private:
 	BSLib::u16		m_imageSize;
 
@@ -98,6 +99,10 @@ public:
 	void OnSize(wxSizeEvent& event);
 
 	bool CreateList();
+
+	bool CreateItem(ECreateItemType _type);
+private:
+	bool _createItemSkill();
 private:
 	static BSLib::u16	sm_nameItemWidth;
 	DECLARE_EVENT_TABLE()

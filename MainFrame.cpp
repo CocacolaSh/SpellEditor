@@ -5,12 +5,14 @@
 #include "wx/listctrl.h"
 #include "wx/display.h"
 
+#define MENU_LINK(name) EVT_MENU(CTreeView_##name, CMainFrame::On##name)
 BEGIN_EVENT_TABLE(CMainFrame, wxFrame)
 	EVT_MENU(wxID_ABOUT, CMainFrame::OnAbout)
 	EVT_MENU(wxID_EXIT, CMainFrame::OnQuit)
 	EVT_MENU(wxID_OPEN, CMainFrame::OnOpenFile)
 	EVT_SIZE(			CMainFrame::OnSize)
 	EVT_BUTTON(wxID_OK, CMainFrame::OnButtonOk)
+	MENU_LINK(CreateItemOnListView)
 END_EVENT_TABLE()
 BSLib::f32 CMainFrame::m_spliterPosPct = 0.2f;
 
@@ -40,6 +42,17 @@ void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
 	wxTreeItemId selItem = m_leftWindow->GetSelection();
 
 	LOG_PROCESS_ERROR (selItem.IsOk());
+
+	if (selItem == m_leftWindow->getSkillRootID())
+	{
+		m_rightWindow->CreateItem(ECreateItemType_Skill);
+	}else if (selItem == m_leftWindow->getAuraRootID())
+	{
+		m_rightWindow->CreateItem(ECreateItemType_Aura);
+	}else if (selItem == m_leftWindow->getEotRootID())
+	{
+		m_rightWindow->CreateItem(ECreateItemType_Eot);
+	}
 
 	selText = m_leftWindow->GetItemText(selItem);
 	wxLogMessage(selText);

@@ -85,6 +85,13 @@ Exit0:
 
 		BSLib::s32 skipRowCnt = 3;
 		BSLib::s32 rowCount = xmlTable->rowSize();
+		BSLib::s32 colCount = xmlTable->columnSize();
+		m_showData.resize(colCount);
+
+		for (BSLib::s32 i = 0; i < colCount; ++i)
+		{
+			xmlTable->getColumnValue(1, i, m_showData[i].showName);
+		}
 
 		LOG_PROCESS_ERROR(rowCount > skipRowCnt);
 		m_pEntrys = new CSkillEntry[rowCount - skipRowCnt];
