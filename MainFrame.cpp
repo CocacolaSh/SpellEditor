@@ -1,8 +1,8 @@
 #include "MainFrame.h"
 #include "MainSplitterWindow.h"
+#include "CListView.h"
 #include "basedef.h"
 #include "Process_error.h"
-#include "wx/listctrl.h"
 #include "wx/display.h"
 
 #define MENU_LINK(name) EVT_MENU(CTreeView_##name, CMainFrame::On##name)
@@ -96,7 +96,7 @@ bool CMainFrame::initPanel()
 		wxTR_HIDE_ROOT | wxTR_DEFAULT_STYLE | wxTR_HAS_BUTTONS | wxTR_SINGLE);
 	m_leftWindow->initTreeView();
 
-	m_rightWindow = new CListView(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxBORDER_THEME);
+	m_rightWindow = new CListView(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxLC_VRULES | wxLC_HRULES);
 	m_rightWindow->initWithReportItems();
 
 	m_splitterWindow->SplitVertically(m_leftWindow, m_rightWindow, width * m_spliterPosPct);

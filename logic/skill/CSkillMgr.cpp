@@ -90,6 +90,7 @@ Exit0:
 
 		for (BSLib::s32 i = 0; i < colCount; ++i)
 		{
+			xmlTable->getColumnValue(0, i, m_showData[i].indexName);
 			xmlTable->getColumnValue(1, i, m_showData[i].showName);
 		}
 

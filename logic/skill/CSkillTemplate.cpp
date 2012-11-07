@@ -9,6 +9,7 @@ namespace SKILLEDITOR
 		memset(m_intData, 0, sizeof(m_intData));
 		memset(m_conditionChecker, 0, sizeof(m_conditionChecker));
 		memset(m_seq, 0, sizeof(m_seq));
+		memset(m_attackEffect, NULL, sizeof(m_attackEffect));
 	}
 
 	CSkillEntry::~CSkillEntry()

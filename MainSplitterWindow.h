@@ -87,24 +87,4 @@ private:
 };
 
 
-class CListView : public wxListCtrl
-{
-public:
-	CListView(wxWindow *parent, const wxWindowID id,
-		const wxPoint& pos, const wxSize& size,
-		long style);
-
-	void initWithReportItems();
-
-	void OnSize(wxSizeEvent& event);
-
-	bool CreateList();
-
-	bool CreateItem(ECreateItemType _type);
-private:
-	bool _createItemSkill();
-private:
-	static BSLib::u16	sm_nameItemWidth;
-	DECLARE_EVENT_TABLE()
-};
 #endif

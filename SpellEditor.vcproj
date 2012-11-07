@@ -175,6 +175,18 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\CListView.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CListView.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CListViewRegister.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MainFrame.cpp"
 				>
 			</File>

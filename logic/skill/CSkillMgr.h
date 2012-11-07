@@ -10,6 +10,7 @@ namespace SKILLEDITOR
 {
 	typedef struct _SListItemShowData
 	{
+		BSLib::stringc indexName;
 		BSLib::stringc showName;
 		void *reserved;
 	}SListItemShowData;
