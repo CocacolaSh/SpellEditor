@@ -4,11 +4,11 @@
 //#include "wx/richtext/richtextctrl.h"
 
 
-
 BSLib::u16 CListView::sm_nameItemWidth = 250;
 
 BEGIN_EVENT_TABLE(CListView, wxGrid)
 EVT_SIZE(		CListView::OnSize)
+EVT_GRID_CELL_LEFT_CLICK(CListView::OnCellLeftClick )
 END_EVENT_TABLE()
 
 
@@ -16,7 +16,7 @@ END_EVENT_TABLE()
 CListView::CListView(wxWindow *parent, const wxWindowID id,
 					 const wxPoint& pos, const wxSize& size,
 					 long style)
-					 : wxGrid(parent, id, pos, size, style)
+					 : wxGrid(parent, id, pos, size, style), m_selTemp(NULL)
 					 //m_attr(*wxBLUE, *wxLIGHT_GREY, wxNullFont)
 {
 	SetRowLabelSize(0);
@@ -27,6 +27,32 @@ void CListView::OnSize(wxSizeEvent& event)
 {
 	//this->SetColumnWidth(1, GetSize().GetWidth() - sm_nameItemWidth);
 	event.Skip();
+}
+void CListView::OnCellLeftClick(wxGridEvent& ev)
+{
+	// This forces the cell to go into edit mode directly
+	m_waitForSlowClick = TRUE;
+	SetGridCursor(ev.GetRow(), ev.GetCol());
+	// Store the click co-ordinates in the editor if possible
+	// if an editor has created a ClientData area, we presume it's
+	// a wxPoint and we store the click co-ordinates
+	wxGridCellEditor* pEditor  = GetCellEditor(ev.GetRow(), ev.GetCol());
+	wxPoint* pClickPoint = (wxPoint*)pEditor->GetClientData();
+	if (pClickPoint)
+	{
+		*pClickPoint = ClientToScreen(ev.GetPosition());
+#ifndef __WINDOWS__
+		EnableCellEditControl(true);
+#endif
+	}
+	// hack to prevent selection from being lost when click combobox
+	if (ev.GetCol() == 0 && IsInSelection(ev.GetRow(), ev.GetCol()))
+	{
+		m_selTemp = m_selection;
+		m_selection = NULL;
+	}
+	pEditor->DecRef();
+	ev.Skip();
 }
 void CListView::initWithReportItems()
 {

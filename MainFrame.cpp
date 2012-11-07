@@ -36,7 +36,7 @@ void CMainFrame::OnOpenFile(wxCommandEvent& event)
 }
 void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
 {
-	wxString selText = wxT("");
+	//wxString selText = wxT("");
 	LOG_PROCESS_ERROR (m_leftWindow && m_rightWindow);
 
 	wxTreeItemId selItem = m_leftWindow->GetSelection();
@@ -54,8 +54,8 @@ void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
 		m_rightWindow->CreateItem(ECreateItemType_Eot);
 	}
 
-	selText = m_leftWindow->GetItemText(selItem);
-	wxLogMessage(selText);
+	//selText = m_leftWindow->GetItemText(selItem);
+	//wxLogMessage(selText);
 	return;
 Exit0:
 	return;

@@ -9,6 +9,7 @@
 #include "wx/listctrl.h"
 //#include "wx/dataview.h"
 #include "wx/grid.h"
+#include "wx/laywin.h"
 #include "MainFrame.h"
 #include "basedef.h"
 #include "colaString.h"
@@ -33,6 +34,9 @@ typedef struct _SCustomLVItemInfo
 typedef stdext::hash_map<BSLib::stringc, SCustomLVItemInfo*> ListViewItemMap;
 
 
+
+
+
 class CListView : public wxGrid
 {
 public:
@@ -43,6 +47,7 @@ public:
 	void initWithReportItems();
 
 	void OnSize(wxSizeEvent& event);
+	void OnCellLeftClick(wxGridEvent& event);
 
 	bool CreateList();
 
@@ -53,12 +58,23 @@ public:
 	ListViewItemMap *getSkillItemMap(){return &m_skillItemWindow;}
 	ListViewItemMap *getEotItemMap(){return &m_eotItemWindow;}
 	ListViewItemMap *getAuraItemMap(){return &m_auraItemWindow;}
+
+	void RevertSel()
+	{
+		if (m_selTemp) 
+		{
+			wxASSERT(m_selection == NULL);
+			m_selection = m_selTemp;
+			m_selTemp = NULL;
+		}
+	}
 private:
 	bool _createItemSkill();
 private:
 	ListViewItemMap m_skillItemWindow;
 	ListViewItemMap m_eotItemWindow;
 	ListViewItemMap m_auraItemWindow;
+	wxGridSelection *m_selTemp;
 
 	static BSLib::u16	sm_nameItemWidth;
 	DECLARE_EVENT_TABLE()
