@@ -62,10 +62,11 @@ Exit0:
 }
 void CMainFrame::OnSize(wxSizeEvent& event)
 {
-	wxSize size = GetClientSize();
+	//wxSize size = GetClientSize();
 
-	m_panel->SetSize(size);
-	m_splitterWindow->SetSize(size);
+	//m_panel->SetSize(size);
+	//m_splitterWindow->SetSize(size);
+	//m_splitterWindow->SplitVertically(m_leftWindow, m_rightWindow, size.GetWidth() * m_spliterPosPct);
 	/*m_leftWindow->SetSize(0, 0, size.x * m_spliterPosPct, size.y);
 	m_rightWindow->SetSize(size.x * m_spliterPosPct, 0, size.x * (1 - m_spliterPosPct) , size.y);*/
 
@@ -76,6 +77,13 @@ void CMainFrame::OnButtonOk(wxCommandEvent &event)
 	//
 }
 
+
+void CMainFrame::OnGridSize(wxSizeEvent& event)
+{
+	BSLib::s32 wc = event.GetSize().GetWidth();
+	m_rightWindow->SetColSize(0, wc * 0.4);
+	m_rightWindow->SetColSize(1, wc * 0.5);
+}
 bool CMainFrame::initPanel()
 {
 	BSLib::s32 width = 0;
@@ -83,11 +91,15 @@ bool CMainFrame::initPanel()
 	wxSize clientSize = GetClientSize();
 	width = clientSize.GetWidth();
 
-	m_panel = new wxPanel(this,wxID_ANY, wxDefaultPosition, clientSize, wxSIMPLE_BORDER, wxT("MainPanel"));
-	LOG_PROCESS_ERROR(m_panel);
+	//m_panel = new wxPanel(this,wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER, wxT("MainPanel"));
+	//LOG_PROCESS_ERROR(m_panel);
 
-	m_splitterWindow = new CMainSplitterWindow(m_panel);
+	wxBoxSizer *boxSizer = new wxBoxSizer(wxHORIZONTAL);
+
+	m_splitterWindow = new CMainSplitterWindow(this);
 	LOG_PROCESS_ERROR(m_splitterWindow != NULL);
+
+	boxSizer->Add(m_splitterWindow, 1, wxEXPAND | wxALL, 0);
 
 	m_splitterWindow->SetSize(clientSize);
 	//m_splitterWindow->SetSashGravity(1.0);
@@ -99,7 +111,13 @@ bool CMainFrame::initPanel()
 	m_rightWindow = new CListView(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxLC_VRULES | wxLC_HRULES);
 	m_rightWindow->initWithReportItems();
 
+	m_rightWindow->Connect( wxEVT_SIZE,
+		wxSizeEventHandler(CMainFrame::OnGridSize), NULL, this);
+
 	m_splitterWindow->SplitVertically(m_leftWindow, m_rightWindow, width * m_spliterPosPct);
+	SetSizer(boxSizer);
+	boxSizer->Fit(this);
+	boxSizer->SetSizeHints(this);
 
 Exit0:
 	return false;

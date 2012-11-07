@@ -44,6 +44,7 @@ public:
 	void OnButtonOk(wxCommandEvent& event);
 
 	void OnSize(wxSizeEvent& event);
+	void OnGridSize(wxSizeEvent& event);
 
 	void OnCreateItemOnListView(wxCommandEvent& event);
 private:

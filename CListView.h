@@ -7,7 +7,8 @@
 #endif
 #include "wx/splitter.h"
 #include "wx/listctrl.h"
-#include "wx/dataview.h"
+//#include "wx/dataview.h"
+#include "wx/grid.h"
 #include "MainFrame.h"
 #include "basedef.h"
 #include "colaString.h"
@@ -23,28 +24,16 @@ enum ESkillLVItemType
 	ESkillLVItemType_Descript,
 	ESkillLVItemType_Count,
 };
-typedef stdext::hash_map<BSLib::stringc, wxWindow*> ListViewItemMap;
-class CListViewItem : public wxListItem
-{
-public:
-	CListViewItem()
-	{	}
 
-	bool init(ListViewItemMap &lvMap, BSLib::stringc indexStr, wxString keyStr, const wxPoint& pos, const wxRect& size);
-	~CListViewItem(){}
-private:
-	wxString  m_keyStr;
-	wxWindow *m_subControl;
-};
-
-template<class T>
-T* createWindow(wxWindow *parent, const wxWindowID id,
-				const wxPoint& pos, const wxSize& size,
-				long style)
+typedef struct _SCustomLVItemInfo
 {
-	return new T(parent, id, pos, size, style);
-}
-class CListView : public wxDataViewCtrl
+	wxGridCellAttr*			m_cellAttr;
+	wxGridCellRenderer*		m_cellRenderer;
+}SCustomLVItemInfo;
+typedef stdext::hash_map<BSLib::stringc, SCustomLVItemInfo*> ListViewItemMap;
+
+
+class CListView : public wxGrid
 {
 public:
 	CListView(wxWindow *parent, const wxWindowID id,
