@@ -98,7 +98,7 @@ public:
 protected:
 	wxPoint m_pointActivate;
 	wxComboCtrl *Combo() const { return (wxComboCtrl*)m_control; }
-	wxString        m_value;
+	wxString   m_value;
 	wxArrayString   m_choices;
 	bool            m_allowOthers;
 };

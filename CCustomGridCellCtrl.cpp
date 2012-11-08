@@ -424,17 +424,18 @@ class SCheckComboBox : public wxCheckListBox, public wxComboPopup
 {
 public:
 	SCheckComboBox();
-	SCheckComboBox(wxWindow *parent, wxWindowID id,
-		/*const wxString& value = wxEmptyString,*/
-		const wxPoint& pos = wxDefaultPosition,
-		const wxSize& size = wxDefaultSize,
-		int n = 0, const wxString choices[] = NULL,
-		long style = 0,
-		const wxValidator& validator = wxDefaultValidator,
-		const wxString& name = wxComboBoxNameStr);
+	// Initialize member variables
+	virtual void Init()
+	{
+		m_nRow = m_nCol = -1; 
+		m_pGrid = NULL;
+		m_value = "";
+		m_curItem = -1;
+	}
+
 	virtual bool Create(wxWindow* parent)
 	{
-		return wxCheckListBox::Create(parent,1,wxPoint(0,0),wxDefaultSize);
+		return wxCheckListBox::Create(parent, wxID_ANY, parent->GetPosition(),wxDefaultSize);
 	}
 	// Translate string into a list selection
 	virtual void SetStringValue(const wxString& s)
@@ -446,9 +447,15 @@ public:
 	// Get list selection as a string
 	virtual wxString GetStringValue() const
 	{
-		//if ( m_value >= 0 )
-		//	return wxCheckListBox::GetItemText(m_value);
-		return wxEmptyString;
+		wxString valueStr = "";
+		for (size_t i = 0; i < wxCheckListBox::GetCount(); ++i)
+		{
+			if (wxCheckListBox::IsChecked(i))
+			{
+				valueStr += wxCheckListBox::GetString(i) + ',';
+			}
+		}
+		return valueStr;
 	}
 	virtual wxWindow *GetControl() { return this; }
 	void SetCellData(int nRow, int nCol, wxGrid* pGrid)
@@ -457,48 +464,74 @@ public:
 		m_nCol = nCol;
 		m_pGrid = pGrid;
 	}
+
+	virtual void OnDismiss()
+	{
+		if (m_pGrid) 
+		{
+			m_pGrid->GetTable()->SetValue(m_nRow, m_nCol, GetStringValue());
+			//		m_pGrid->SetCellValue(m_nRow, m_nCol, event.GetString());
+			wxGridEvent gridEvt(m_pGrid->GetId(),
+				wxEVT_GRID_CELL_CHANGE, m_pGrid, m_nRow, m_nCol);
+			gridEvt.SetString(GetStringValue());
+			GetEventHandler()->ProcessEvent(gridEvt);
+		}
+		wxComboPopup::OnDismiss();
+	}
+	// Do mouse hot-tracking (which is typical in list popups)
+	void OnMouseMove(wxMouseEvent& event)
+	{
+		// TODO: Move selection to cursor
+		int hitItem = HitTest(event.GetPosition());
+		if (hitItem >= 0)
+		{
+			//Select(hitItem);
+			m_curItem = hitItem;
+		}
+	}
+
+	void OnCheckListbox(wxCommandEvent& event)
+	{
+		wxLogMessage( wxT("Listbox item %d toggled"), event.GetInt() );
+	}
+	// On mouse left up, set the value and close the popup
+	void OnMouseClick(wxMouseEvent& WXUNUSED(event))
+	{
+		//int checkItem = HitTest(event.GetPosition());
+		wxCheckListBox::Check(m_curItem, !wxCheckListBox::IsChecked(m_curItem));
+		//m_value = "";
+		//for (size_t i = 0; i < wxCheckListBox::GetCount(); ++i)
+		//{
+		//	if (wxCheckListBox::IsChecked(i))
+		//	{
+		//		m_value += wxCheckListBox::GetString(i) + ',';
+		//	}
+		//}
+		//m_value = wxListView::GetFirstSelected();
+
+		// TODO: Send event as well
+
+		//Dismiss();
+	}
 private:
 	DECLARE_EVENT_TABLE()
-	void OnChange(wxCommandEvent& event);
 	int m_nRow;
 	int m_nCol; 
+	int m_curItem;
 	wxGrid* m_pGrid;
+	wxString m_value;
 };
-
-
-SCheckComboBox::SCheckComboBox(wxWindow *parent, wxWindowID id,
-					 //const wxString& value,
-					 const wxPoint& pos,
-					 const wxSize& size,
-					 int n, const wxString choices[],
-					 long style,
-					 const wxValidator& validator,
-					 const wxString& name)
-{
-	wxCheckListBox::Create(parent, id, /*value,*/ pos, size, n, choices, style, validator, name);
-}
 
 SCheckComboBox::SCheckComboBox() : m_pGrid(NULL)
 { 
 }
 
 BEGIN_EVENT_TABLE(SCheckComboBox, wxCheckListBox)
-EVT_COMBOBOX(-1, SCheckComboBox::OnChange)
+EVT_CHECKLISTBOX(-1, SCheckComboBox::OnCheckListbox)
+EVT_MOTION(SCheckComboBox::OnMouseMove)
+EVT_LEFT_UP(SCheckComboBox::OnMouseClick)
 END_EVENT_TABLE()
 
-void SCheckComboBox::OnChange(wxCommandEvent& event)
-{
-	if (m_pGrid) 
-	{
-		m_pGrid->GetTable()->SetValue(m_nRow, m_nCol, event.GetString());
-		//		m_pGrid->SetCellValue(m_nRow, m_nCol, event.GetString());
-		wxGridEvent gridEvt(m_pGrid->GetId(),
-			wxEVT_GRID_CELL_CHANGE, m_pGrid, m_nRow, m_nCol);
-		gridEvt.SetString(event.GetString());
-		GetEventHandler()->ProcessEvent(gridEvt);
-	}
-	event.Skip();
-}
 
 CCheckComboEditor::CCheckComboEditor(size_t count,
 								   const wxString choices[],
@@ -528,22 +561,11 @@ void CCheckComboEditor::Create(wxWindow* parent,
 							  wxWindowID id,
 							  wxEvtHandler* evtHandler)
 {
-	size_t count = m_choices.GetCount();
-	wxString *choices = new wxString[count];
-	for ( size_t n = 0; n < count; n++ )
-	{
-		choices[n] = m_choices[n];
-	}
-
-	m_control = new wxComboCtrl(parent, wxID_ANY, wxEmptyString);
-	SCheckComboBox *popupCombobox = new SCheckComboBox(parent, wxID_ANY, wxDefaultPosition,
-		wxDefaultSize, count, choices);
+	m_control = new wxComboCtrl(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize);
+	SCheckComboBox *popupCombobox = new SCheckComboBox();
 	Combo()->SetPopupControl(popupCombobox);
-	/*m_control = new SCheckComboBox(parent, id, wxEmptyString,
-		wxDefaultPosition, wxDefaultSize,
-		count, choices,
-		m_allowOthers ? 0 : wxCB_READONLY);*/
-	delete [] choices;
+	popupCombobox->InsertItems(m_choices, 0);
+
 	wxGridCellEditor::Create(parent, id, evtHandler);
 }
 
@@ -562,21 +584,36 @@ void CCheckComboEditor::BeginEdit(int row, int col, wxGrid* grid)
 	pEzGrid->RevertSel();
 
 	m_value = grid->GetTable()->GetValue(row, col);
-
+	
+	SCheckComboBox *popupCombobox = (SCheckComboBox *)(Combo()->GetPopupControl());
 	if (m_allowOthers)
-		Combo()->SetValue(m_value);
+	{
+		wxStringTokenizer tk(m_value, _T(','));
+		
+		while ( tk.HasMoreTokens() )
+		{
+			wxString insertItem = tk.GetNextToken();
+			m_value += insertItem + ',';
+			//m_values.Add(insertItem);
+			popupCombobox->Insert(insertItem, popupCombobox->GetCount());
+		}
+	}
 	else
 	{
-		// find the right position, or default to the first if not found
-		/*int pos = Combo()->FindString(m_value);
-		if (pos == -1)
-			pos = 0;
-		Combo()->SetSelection(pos);*/
+		wxStringTokenizer tk(m_value, _T(','));
+
+		while ( tk.HasMoreTokens() )
+		{
+			wxString insertItem = tk.GetNextToken();
+			int n = popupCombobox->FindString(insertItem);
+			if ( n >= 0 && n < popupCombobox->GetCount() )
+				popupCombobox->Check(n);
+		}
 	}
 	//Combo()->SetInsertionPointEnd();
 	Reset();
 	Combo()->SetFocus();
-	//Combo()->SetCellData(row, col, grid);
+	popupCombobox->SetCellData(row, col, grid);
 	if (m_pointActivate.x > -1 && m_pointActivate.y > -1)
 	{
 		m_pointActivate = Combo()->ScreenToClient(m_pointActivate);
@@ -615,20 +652,23 @@ bool CCheckComboEditor::EndEdit(int row, int col,
 							   const wxString& WXUNUSED(oldval),
 							   wxString *newval)
 {
-	wxString value = Combo()->GetValue();
-	bool changed = value != grid->GetTable()->GetValue(row, col);
+
+	SCheckComboBox *popupCombobox = (SCheckComboBox *)(Combo()->GetPopupControl());
+	wxString value = GetValue();
+	wxString checkComboString= grid->GetTable()->GetValue(row, col);
+
+	bool changed = value != checkComboString;
 
 	if ( changed )
 		grid->GetTable()->SetValue(row, col, value);
 
-	m_value = wxEmptyString;
-	/*if (m_allowOthers)
-		Combo()->SetValue(m_value);
-	else
-		Combo()->SetSelection(0);*/
+	if (m_allowOthers)
+		Combo()->SetValue(checkComboString);
+	//else
+	//	Combo()->SetSelection(0);
 
 	if ( newval )
-		*newval = value;
+		*newval = checkComboString;
 
 	return changed;
 }
@@ -638,23 +678,34 @@ void CCheckComboEditor::ApplyEdit(int row, int col, wxGrid* grid)
 }
 void CCheckComboEditor::Reset()
 {
-	if (m_allowOthers)
-	{
-		Combo()->SetValue(m_value);
-		Combo()->SetInsertionPointEnd();
-	}
-	else // the combobox is read-only
-	{
-		// find the right position, or default to the first if not found
-		/*int pos = Combo()->FindString(m_value);
-		if (pos == wxNOT_FOUND)
-			pos = 0;
-		Combo()->SetSelection(pos);*/
-	}
+	Combo()->SetValue(m_value);
+	//if (m_allowOthers)
+	//{
+	//	Combo()->SetValue(m_value);
+	//	Combo()->SetInsertionPointEnd();
+	//}
+	//else // the combobox is read-only
+	//{
+	//	// find the right position, or default to the first if not found
+	//	/*int pos = Combo()->FindString(m_value);
+	//	if (pos == wxNOT_FOUND)
+	//		pos = 0;
+	//	Combo()->SetSelection(pos);*/
+	//}
 }
 wxString CCheckComboEditor::GetValue() const
 {
 	return Combo()->GetValue();
+	//SCheckComboBox *popupCombobox = (SCheckComboBox *)(Combo()->GetPopupControl());
+	////wxString checkComboString="";
+	///*for (size_t i = 0; i < popupCombobox->GetCount(); ++i)
+	//{
+	//	if (popupCombobox->IsChecked(i))
+	//	{
+	//		checkComboString += popupCombobox->GetString(i) + ',';
+	//	}
+	//}*/
+	//return popupCombobox->GetStringValue();
 }
 void CCheckComboEditor::SetParameters(const wxString& params)
 {
