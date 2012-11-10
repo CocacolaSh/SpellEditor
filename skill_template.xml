@@ -289,11 +289,11 @@
     <VerticalResolution>200</VerticalResolution>
    </Print>
    <Selected/>
-   <LeftColumnVisible>35</LeftColumnVisible>
+   <LeftColumnVisible>2</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>62</ActiveCol>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

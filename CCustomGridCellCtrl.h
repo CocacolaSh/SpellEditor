@@ -102,4 +102,48 @@ protected:
 	wxArrayString   m_choices;
 	bool            m_allowOthers;
 };
+
+class CGridCellTextButtonRenderer : public wxGridCellStringRenderer
+{
+public:
+	CGridCellTextButtonRenderer(wxLayoutAlignment border = wxLAYOUT_NONE) : 
+	  m_border(border) {}
+	  virtual void Draw(wxGrid& grid,
+		  wxGridCellAttr& attr,
+		  wxDC& dc,
+		  const wxRect& rect,
+		  int row, int col,
+		  bool isSelected);
+	  virtual wxGridCellRenderer *Clone() const
+	  { return new CGridCellTextButtonRenderer; }
+private:
+	wxLayoutAlignment m_border;
+};
+
+class STextButton;
+class CTextButtonEditor : public wxGridCellEditor
+{
+public:
+	CTextButtonEditor(wxString buttonLabel, bool allowOthers = true);
+	virtual void Create(wxWindow* parent,
+		wxWindowID id,
+		wxEvtHandler* evtHandler);
+	virtual void PaintBackground(const wxRect& rectCell, wxGridCellAttr *attr);
+
+	virtual void BeginEdit(int row, int col, wxGrid* grid);
+	virtual bool EndEdit(int row, int col, const wxGrid* grid,
+		const wxString& oldval, wxString *newval);
+	virtual void ApplyEdit(int row, int col, wxGrid* grid);
+
+	virtual void Reset();
+
+	virtual wxGridCellEditor *Clone() const;
+	virtual wxString GetValue() const;
+protected:
+	wxPoint m_pointActivate;
+	STextButton *TextCtrl() const { return (STextButton*)m_control; }
+	wxString   m_value;
+	wxString   m_btnLabel;
+	bool            m_allowOthers;
+};
 #endif

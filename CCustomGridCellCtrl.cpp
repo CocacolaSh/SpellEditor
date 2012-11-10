@@ -499,19 +499,6 @@ public:
 	{
 		//int checkItem = HitTest(event.GetPosition());
 		wxCheckListBox::Check(m_curItem, !wxCheckListBox::IsChecked(m_curItem));
-		//m_value = "";
-		//for (size_t i = 0; i < wxCheckListBox::GetCount(); ++i)
-		//{
-		//	if (wxCheckListBox::IsChecked(i))
-		//	{
-		//		m_value += wxCheckListBox::GetString(i) + ',';
-		//	}
-		//}
-		//m_value = wxListView::GetFirstSelected();
-
-		// TODO: Send event as well
-
-		//Dismiss();
 	}
 private:
 	DECLARE_EVENT_TABLE()
@@ -664,8 +651,6 @@ bool CCheckComboEditor::EndEdit(int row, int col,
 
 	if (m_allowOthers)
 		Combo()->SetValue(checkComboString);
-	//else
-	//	Combo()->SetSelection(0);
 
 	if ( newval )
 		*newval = checkComboString;
@@ -679,33 +664,10 @@ void CCheckComboEditor::ApplyEdit(int row, int col, wxGrid* grid)
 void CCheckComboEditor::Reset()
 {
 	Combo()->SetValue(m_value);
-	//if (m_allowOthers)
-	//{
-	//	Combo()->SetValue(m_value);
-	//	Combo()->SetInsertionPointEnd();
-	//}
-	//else // the combobox is read-only
-	//{
-	//	// find the right position, or default to the first if not found
-	//	/*int pos = Combo()->FindString(m_value);
-	//	if (pos == wxNOT_FOUND)
-	//		pos = 0;
-	//	Combo()->SetSelection(pos);*/
-	//}
 }
 wxString CCheckComboEditor::GetValue() const
 {
 	return Combo()->GetValue();
-	//SCheckComboBox *popupCombobox = (SCheckComboBox *)(Combo()->GetPopupControl());
-	////wxString checkComboString="";
-	///*for (size_t i = 0; i < popupCombobox->GetCount(); ++i)
-	//{
-	//	if (popupCombobox->IsChecked(i))
-	//	{
-	//		checkComboString += popupCombobox->GetString(i) + ',';
-	//	}
-	//}*/
-	//return popupCombobox->GetStringValue();
 }
 void CCheckComboEditor::SetParameters(const wxString& params)
 {
@@ -732,4 +694,246 @@ void CCheckComboEditor::SetParameters(size_t count, const wxString choices[])
 			m_choices.Add(choices[n]);
 		}
 	}
+}
+
+class STextButton : public wxTextCtrl
+{
+public:
+	STextButton(wxWindow *parent, wxWindowID id,
+		const wxString& value = wxEmptyString,
+		const wxPoint& pos = wxDefaultPosition,
+		const wxSize& size = wxDefaultSize,
+		long style = 0,
+		const wxString& name = wxEmptyString);
+	// Initialize member variables
+	virtual void Init()
+	{
+		m_nRow = m_nCol = -1; 
+		m_pGrid = NULL;
+	}
+	
+	virtual wxWindow *GetControl() { return this; }
+	void SetCellData(int nRow, int nCol, wxGrid* pGrid)
+	{
+		m_nRow = nRow;
+		m_nCol = nCol;
+		m_pGrid = pGrid;
+	}
+	void OnPaint(wxPaintEvent &event);
+	void OnSize(wxSizeEvent& event);
+	// On mouse left up, set the value and close the popup
+	void OnMouseClick(wxMouseEvent& WXUNUSED(event))
+	{
+		//int checkItem = HitTest(event.GetPosition());
+		
+	}
+private:
+	DECLARE_EVENT_TABLE()
+	int m_nRow;
+	int m_nCol; 
+	wxGrid* m_pGrid;
+	wxButton *m_button;
+};
+BEGIN_EVENT_TABLE(STextButton, wxTextCtrl)
+	EVT_PAINT(STextButton::OnPaint)
+	EVT_SIZE(			STextButton::OnSize)
+END_EVENT_TABLE()
+STextButton::STextButton(wxWindow *parent, wxWindowID id,
+			const wxString& value,
+			const wxPoint& pos,
+			const wxSize& size,
+			long style,
+			const wxString& name)
+			:wxTextCtrl(parent, id, value, pos, size, style)
+{
+	//wxPoint parentPos = parent->GetPosition();
+	//wxSize parentSize = parent->GetSize();
+
+	//wxPoint ctrlPos = parentPos;
+	//ctrlPos.x += parentSize.x * 0.8;
+	//wxSize ctrlSize = parentSize;
+	//ctrlSize.x = parentSize.x * 0.2;
+	m_button = new wxButton(parent, id, name/*, ctrlPos, ctrlSize*/);
+}
+
+void STextButton::OnPaint(wxPaintEvent &event)
+{
+	//CPaintDC dc( this );
+	//CRect rect;
+
+	//wxSize textCtrlSize = GetSize();
+
+	//wxSize textSize( textCtrlSize.x * 0.7, textCtrlSize.y);
+	//SetSize(textSize);
+
+	//
+	//wxPoint btnPos = GetPosition();
+	//btnPos.x = btnPos.x + textCtrlSize.x * 0.7;
+	//m_button->SetPosition(btnPos);
+}
+
+void STextButton::OnSize(wxSizeEvent& event)
+{
+	wxSize ctrlSize = GetSize();
+
+	wxSize textSize( ctrlSize.x - m_button->GetSize().x - 2, ctrlSize.y);
+	SetSize(textSize);
+
+	wxPoint btnPos = GetPosition();
+	btnPos.x = btnPos.x + textSize.x + 2;
+	m_button->SetPosition(btnPos);
+	ctrlSize.x = m_button->GetSize().x;
+	m_button->SetSize(ctrlSize);
+
+	event.Skip();
+}
+void CGridCellTextButtonRenderer::Draw(wxGrid& grid, wxGridCellAttr& attr, wxDC& dc,
+								   const wxRect& rectCell, int row, int col, bool isSelected)
+{
+	wxGridCellRenderer::Draw(grid, attr, dc, rectCell, row, col, isSelected);
+	// first calculate button size
+	// don't draw outside the cell
+
+}
+
+
+CTextButtonEditor::CTextButtonEditor(wxString buttonLabel, bool allowOthers)
+								   : m_allowOthers(allowOthers), m_btnLabel(buttonLabel)
+{
+	SetClientData((void*)&m_pointActivate);
+}
+
+wxGridCellEditor *CTextButtonEditor::Clone() const
+{
+	CTextButtonEditor *editor = new CTextButtonEditor(m_btnLabel);
+	editor->m_allowOthers = m_allowOthers;
+	return editor;
+}
+
+void CTextButtonEditor::Create(wxWindow* parent,
+							  wxWindowID id,
+							  wxEvtHandler* evtHandler)
+{
+
+	m_control = new STextButton(parent, wxID_ANY, wxString("45612"), wxDefaultPosition,
+		wxDefaultSize, wxTE_RICH2, m_btnLabel);
+
+	wxGridCellEditor::Create(parent, id, evtHandler);
+}
+
+void CTextButtonEditor::PaintBackground(const wxRect& rectCell,
+									   wxGridCellAttr * attr)
+{
+	wxGridCellEditor::PaintBackground(rectCell, attr);
+}
+
+void CTextButtonEditor::BeginEdit(int row, int col, wxGrid* grid)
+{
+//	wxASSERT_MSG(m_control,
+//		wxT("The wxGridCellEditor must be Created first!"));
+//
+//	CListView* pEzGrid = (CListView*)grid;
+//	pEzGrid->RevertSel();
+//
+//	m_value = grid->GetTable()->GetValue(row, col);
+//	
+//	SCheckComboBox *popupCombobox = (SCheckComboBox *)(Combo()->GetPopupControl());
+//	if (m_allowOthers)
+//	{
+//		wxStringTokenizer tk(m_value, _T(','));
+//		
+//		while ( tk.HasMoreTokens() )
+//		{
+//			wxString insertItem = tk.GetNextToken();
+//			m_value += insertItem + ',';
+//			//m_values.Add(insertItem);
+//			popupCombobox->Insert(insertItem, popupCombobox->GetCount());
+//		}
+//	}
+//	else
+//	{
+//		wxStringTokenizer tk(m_value, _T(','));
+//
+//		while ( tk.HasMoreTokens() )
+//		{
+//			wxString insertItem = tk.GetNextToken();
+//			int n = popupCombobox->FindString(insertItem);
+//			if ( n >= 0 && n < popupCombobox->GetCount() )
+//				popupCombobox->Check(n);
+//		}
+//	}
+//	//Combo()->SetInsertionPointEnd();
+//	Reset();
+//	Combo()->SetFocus();
+//	popupCombobox->SetCellData(row, col, grid);
+//	if (m_pointActivate.x > -1 && m_pointActivate.y > -1)
+//	{
+//		m_pointActivate = Combo()->ScreenToClient(m_pointActivate);
+//#ifdef __WINDOWS__
+//		SendMessage((HWND)Combo()->GetHandle(), WM_LBUTTONDOWN, 0,
+//			MAKELPARAM(m_pointActivate.x, m_pointActivate.y));
+//#else
+//		GtkCombo *combo = GTK_COMBO(Combo()->m_widget);
+//		combo->current_button = 0;
+//		GtkWidget *button = GTK_COMBO(Combo()->m_widget)->button;
+//		GdkEventButton event;
+//		memset(&event, 0, sizeof(event));
+//		gdk_window_ref (button->window);
+//		// to do: only call when the click point is on the button
+//		//		event.x = m_pointActivate.x;
+//		//		event.y = m_pointActivate.y;
+//		event.x = 0;
+//		event.y = 0;
+//		event.deviceid = GDK_CORE_POINTER;
+//		event.type = GDK_BUTTON_PRESS;
+//		event.source = GDK_SOURCE_MOUSE;
+//		event.time = 0; 
+//		event.window = button->window;
+//		event.send_event = TRUE;
+//		event.button = 1;
+//		gtk_widget_event (button, (GdkEvent *)&event);
+//		gdk_window_unref (button->window);
+//		while (gtk_events_pending())
+//			gtk_main_iteration();
+//#endif
+//	}
+}
+
+bool CTextButtonEditor::EndEdit(int row, int col,
+							   const wxGrid* grid,
+							   const wxString& WXUNUSED(oldval),
+							   wxString *newval)
+{
+
+	//SCheckComboBox *popupCombobox = (SCheckComboBox *)(Combo()->GetPopupControl());
+	//wxString value = GetValue();
+	//wxString checkComboString= grid->GetTable()->GetValue(row, col);
+
+	//bool changed = value != checkComboString;
+
+	//if ( changed )
+	//	grid->GetTable()->SetValue(row, col, value);
+
+	//if (m_allowOthers)
+	//	Combo()->SetValue(checkComboString);
+	////else
+	////	Combo()->SetSelection(0);
+
+	//if ( newval )
+	//	*newval = checkComboString;
+
+	//return changed;
+	return true;
+}
+void CTextButtonEditor::ApplyEdit(int row, int col, wxGrid* grid)
+{
+	grid->GetTable()->SetValue(row, col, GetValue());
+}
+void CTextButtonEditor::Reset()
+{
+	//Combo()->SetValue(m_value);
+}
+wxString CTextButtonEditor::GetValue() const
+{
+	return TextCtrl()->GetValue();
 }

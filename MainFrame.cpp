@@ -14,7 +14,7 @@ BEGIN_EVENT_TABLE(CMainFrame, wxFrame)
 	EVT_BUTTON(wxID_OK, CMainFrame::OnButtonOk)
 	MENU_LINK(CreateItemOnListView)
 END_EVENT_TABLE()
-BSLib::f32 CMainFrame::m_spliterPosPct = 0.2f;
+BSLib::f32 CMainFrame::m_spliterPosPct = 0.3f;
 
 void CMainFrame::OnAbout( wxCommandEvent& event)
 {
@@ -130,7 +130,7 @@ CMainFrame::CMainFrame(const wxString& title)
 	//wxRect ClientRect = Screen.GetClientArea();
 
 	//this->SetSize(ClientRect);
-
+	Maximize(true);
 	m_panel = new wxPanel(this);
 	initPanel();
 

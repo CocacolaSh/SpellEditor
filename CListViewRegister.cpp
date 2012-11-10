@@ -69,5 +69,11 @@ bool CListView::registerItemWindow()
 	m_skillItemWindow["SkillPattern"]->m_cellAttr->SetAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
 	m_skillItemWindow["SkillPattern"]->m_cellAttr->SetEditor(new wxGridCellEnumEditor(ScenarioTypeArr[1]));
 	m_skillItemWindow["SkillPattern"]->m_cellAttr->SetRenderer(new wxGridCellStringRenderer);
+
+	m_skillItemWindow["SeqAfterLearn"] = new SCustomLVItemInfo();
+	m_skillItemWindow["SeqAfterLearn"]->m_cellAttr = new wxGridCellAttr;
+	m_skillItemWindow["SeqAfterLearn"]->m_cellAttr->SetAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+	m_skillItemWindow["SeqAfterLearn"]->m_cellAttr->SetEditor(new CTextButtonEditor(wxT("±à¼­")));
+	m_skillItemWindow["SeqAfterLearn"]->m_cellAttr->SetRenderer(new wxGridCellStringRenderer);
 	return true;
 }
