@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="wxmsw29ud_adv.lib wxmsw29ud_core.lib wxbase29ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib wininet.lib"
+				AdditionalDependencies="wxmsw29ud_propgrid.lib wxmsw29ud_adv.lib wxmsw29ud_core.lib wxbase29ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib wininet.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=".\..\..\lib\vc_lib"
 				GenerateDebugInformation="true"
@@ -192,6 +192,18 @@
 			</File>
 			<File
 				RelativePath=".\CListViewRegister.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CMainPropGrid.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CMainPropGrid.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CPropRegister.cpp"
 				>
 			</File>
 			<File

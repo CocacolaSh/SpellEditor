@@ -1,6 +1,7 @@
 #include "MainFrame.h"
 #include "MainSplitterWindow.h"
 #include "CListView.h"
+#include "CMainPropGrid.h"
 #include "basedef.h"
 #include "Process_error.h"
 #include "wx/display.h"
@@ -36,7 +37,12 @@ void CMainFrame::OnOpenFile(wxCommandEvent& event)
 }
 void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
 {
-	//wxString selText = wxT("");
+	wxString btnString = event.GetString();
+
+	if (btnString.Find(m_leftWindow->getSkillRootID().GetID()) == "")
+	{
+	}
+	wxString selText = wxT("");
 	LOG_PROCESS_ERROR (m_leftWindow && m_rightWindow);
 
 	wxTreeItemId selItem = m_leftWindow->GetSelection();
@@ -45,17 +51,17 @@ void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
 
 	if (selItem == m_leftWindow->getSkillRootID())
 	{
-		m_rightWindow->CreateItem(ECreateItemType_Skill);
+		m_rightWindow->showGridPage(ECreateItemType_Skill, true);
 	}else if (selItem == m_leftWindow->getAuraRootID())
 	{
-		m_rightWindow->CreateItem(ECreateItemType_Aura);
+		m_rightWindow->showGridPage(ECreateItemType_Aura);
 	}else if (selItem == m_leftWindow->getEotRootID())
 	{
-		m_rightWindow->CreateItem(ECreateItemType_Eot);
+		m_rightWindow->showGridPage(ECreateItemType_Eot);
 	}
 
-	//selText = m_leftWindow->GetItemText(selItem);
-	//wxLogMessage(selText);
+	selText = m_leftWindow->GetItemText(selItem);
+	wxLogMessage(selText);
 	return;
 Exit0:
 	return;
@@ -80,9 +86,13 @@ void CMainFrame::OnButtonOk(wxCommandEvent &event)
 
 void CMainFrame::OnGridSize(wxSizeEvent& event)
 {
-	BSLib::s32 wc = event.GetSize().GetWidth();
+	//wxSize evtSize = event.GetSize();
+	//m_rightWindow->SetInitialSize(evtSize);
+	//m_rightWindow->SetInitialBestSize(evtSize);
+	//m_rightWindow->SetSize(evtSize);
+	/*BSLib::s32 wc = event.GetSize().GetWidth();
 	m_rightWindow->SetColSize(0, wc * 0.4);
-	m_rightWindow->SetColSize(1, wc * 0.5);
+	m_rightWindow->SetColSize(1, wc * 0.5);*/
 }
 bool CMainFrame::initPanel()
 {
@@ -108,11 +118,17 @@ bool CMainFrame::initPanel()
 		wxTR_HIDE_ROOT | wxTR_DEFAULT_STYLE | wxTR_HAS_BUTTONS | wxTR_SINGLE);
 	m_leftWindow->initTreeView();
 
-	m_rightWindow = new CListView(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxLC_VRULES | wxLC_HRULES);
+	/*m_rightWindow = new CListView(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize,wxLC_REPORT | wxLC_VRULES | wxLC_HRULES);
 	m_rightWindow->initWithReportItems();
 
 	m_rightWindow->Connect( wxEVT_SIZE,
-		wxSizeEventHandler(CMainFrame::OnGridSize), NULL, this);
+		wxSizeEventHandler(CMainFrame::OnGridSize), NULL, this);*/
+	//m_panel = new wxPanel(m_splitterWindow,wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSIMPLE_BORDER, wxT("MainPanel"));
+
+	m_rightWindow = new CMainPropCtrl(m_splitterWindow, ESPELL_LIST_CTRL_ID, wxDefaultPosition, wxDefaultSize, 0);
+	m_rightWindow->createPropGrid();
+	//m_rightWindow->Connect( wxEVT_SIZE,
+	//	wxSizeEventHandler(CMainFrame::OnGridSize), NULL, this);
 
 	m_splitterWindow->SplitVertically(m_leftWindow, m_rightWindow, width * m_spliterPosPct);
 	SetSizer(boxSizer);

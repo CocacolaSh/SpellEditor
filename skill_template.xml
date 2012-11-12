@@ -8,7 +8,7 @@
  xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Created>2006-09-13T11:21:51Z</Created>
-  <LastSaved>2012-10-28T06:42:07Z</LastSaved>
+  <LastSaved>2012-11-11T07:43:07Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -116,11 +116,11 @@
     <Cell><Data ss:Type="String">HitSeq1</Data></Cell>
     <Cell><Data ss:Type="String">HitBreakArmor1</Data></Cell>
     <Cell><Data ss:Type="String">HitAttackInfo1</Data></Cell>
-    <Cell><Data ss:Type="String">AttackBox2</Data></Cell>
+    <Cell><Data ss:Type="String">AttackBoxGroupID2</Data></Cell>
     <Cell><Data ss:Type="String">HitSeq2</Data></Cell>
     <Cell><Data ss:Type="String">HitBreakArmor2</Data></Cell>
     <Cell><Data ss:Type="String">HitAttackInfo2</Data></Cell>
-    <Cell><Data ss:Type="String">AttackBox3</Data></Cell>
+    <Cell><Data ss:Type="String">AttackBoxGroupID3</Data></Cell>
     <Cell><Data ss:Type="String">HitSeq3</Data></Cell>
     <Cell><Data ss:Type="String">HitBreakArmor3</Data></Cell>
     <Cell><Data ss:Type="String">HitAttackInfo3</Data></Cell>
@@ -172,7 +172,7 @@
     <Cell><Data ss:Type="String">攻击特殊作用时间</Data></Cell>
     <Cell><Data ss:Type="String">攻击特殊作用</Data></Cell>
     <Cell><Data ss:Type="String">特殊位移时间</Data></Cell>
-    <Cell><Data ss:Type="String">特殊位移时间</Data></Cell>
+    <Cell><Data ss:Type="String">特殊位移时间间隔</Data></Cell>
     <Cell><Data ss:Type="String">特殊位移距离X</Data></Cell>
     <Cell><Data ss:Type="String">特殊位移距离Y</Data></Cell>
     <Cell><Data ss:Type="String">特殊位移距离Z</Data></Cell>
@@ -289,11 +289,11 @@
     <VerticalResolution>200</VerticalResolution>
    </Print>
    <Selected/>
-   <LeftColumnVisible>2</LeftColumnVisible>
+   <LeftColumnVisible>43</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>7</ActiveCol>
+     <ActiveCol>57</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -13,6 +13,7 @@
 class CMainSplitterWindow;
 class CListView;
 class CTreeView;
+class CMainPropCtrl;
 
 enum 
 {
@@ -22,14 +23,16 @@ enum
 
 enum ECreateItemType
 {
-	ECreateItemType_Skill,
+	ECreateItemType_Skill = 0,
 	ECreateItemType_Aura,
 	ECreateItemType_Eot,
+	ECreateItemType_Count,
 };
 
 enum ETreeViewID
 {
 	CTreeView_CreateItemOnListView = 100,
+	PGID
 };
 class CMainFrame : public wxFrame
 {
@@ -54,7 +57,7 @@ private:
 	static BSLib::f32	m_spliterPosPct;
 	CMainSplitterWindow	*m_splitterWindow;
 	CTreeView *m_leftWindow;
-	CListView *m_rightWindow;
+	CMainPropCtrl *m_rightWindow;
 
 	wxPanel*		m_panel;
 };
