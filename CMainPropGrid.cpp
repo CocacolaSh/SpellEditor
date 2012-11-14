@@ -91,7 +91,7 @@ bool CMainPropCtrl::createPropGrid()
 	
 
 	registerSkillProp();
-	_appendSkillProp();
+	//_appendSkillProp();
 	wxPropertyGridEvent MyEvent(wxEVT_PG_COL_END_DRAG, m_pPropManager->GetId()); 
 	GetEventHandler()->ProcessEvent(MyEvent);
 	//AddPendingEvent(MyEvent);
@@ -120,6 +120,8 @@ bool CMainPropCtrl::_appendSkillProp()
 bool CMainPropCtrl::showGridPage(ECreateItemType _type, bool show)
 {
 	PropViewItemMap::iterator begIter;
+
+	wxPropertyGridIterator it;
 	wxPropertyGridPage *gridPage = m_propGridPages[_type];
 	PropViewItemMap *propViewMap = NULL;
 	switch (_type)
@@ -146,13 +148,24 @@ bool CMainPropCtrl::showGridPage(ECreateItemType _type, bool show)
 
 	LOG_PROCESS_ERROR(propViewMap);
 
+	
+
+	for ( it = gridPage->GetIterator();
+		!it.AtEnd();
+		it++ )
+	{
+		wxPGProperty* p = *it;
+
+		p->Hide(!show);
+	}
+	/*m_propGridPages[0]->GetIterator()
 	begIter = propViewMap->begin();
 	for (; begIter != propViewMap->end(); ++ begIter)
 	{
 		wxPGProperty *prop = (begIter->second);
 		LOG_PROCESS_ERROR(prop);
 		prop->Hide(!show);
-	}
+	}*/
 	return true;
 Exit0:
 	return false;

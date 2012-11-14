@@ -39,9 +39,9 @@ void CMainFrame::OnCreateItemOnListView(wxCommandEvent& event)
 {
 	wxString btnString = event.GetString();
 
-	if (btnString.Find(m_leftWindow->getSkillRootID().GetID()) == "")
+	/*if (btnString.Find(m_leftWindow->getSkillRootID().GetID()) == "")
 	{
-	}
+	}*/
 	wxString selText = wxT("");
 	LOG_PROCESS_ERROR (m_leftWindow && m_rightWindow);
 
