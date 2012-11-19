@@ -696,7 +696,7 @@ void CCheckComboEditor::SetParameters(size_t count, const wxString choices[])
 	}
 }
 
-class STextButton : public wxTextCtrl
+class STextButton : public wxControl
 {
 public:
 	STextButton(wxWindow *parent, wxWindowID id,
@@ -719,22 +719,32 @@ public:
 		m_nCol = nCol;
 		m_pGrid = pGrid;
 	}
+
+	wxString GetValue(){return m_textCtrl->GetValue();}
 	void OnPaint(wxPaintEvent &event);
 	void OnSize(wxSizeEvent& event);
+
 	// On mouse left up, set the value and close the popup
 	void OnMouseClick(wxMouseEvent& WXUNUSED(event))
 	{
 		//int checkItem = HitTest(event.GetPosition());
 		
 	}
+	virtual wxSize DoGetBestSize() const {
+		wxSize sz = m_textCtrl->GetBestSize();
+		wxSize sz2 = m_button->GetBestSize();
+		return wxSize( sz2.GetWidth() + sz.GetWidth() ,
+			sz2.GetHeight() );
+	}
 private:
 	DECLARE_EVENT_TABLE()
 	int m_nRow;
 	int m_nCol; 
 	wxGrid* m_pGrid;
+	wxTextCtrl *m_textCtrl;
 	wxButton *m_button;
 };
-BEGIN_EVENT_TABLE(STextButton, wxTextCtrl)
+BEGIN_EVENT_TABLE(STextButton, wxControl)
 	EVT_PAINT(STextButton::OnPaint)
 	EVT_SIZE(			STextButton::OnSize)
 END_EVENT_TABLE()
@@ -744,7 +754,7 @@ STextButton::STextButton(wxWindow *parent, wxWindowID id,
 			const wxSize& size,
 			long style,
 			const wxString& name)
-			:wxTextCtrl(parent, id, value, pos, size, style)
+			:wxControl(parent, id/*, value, pos, size, style*/)
 {
 	//wxPoint parentPos = parent->GetPosition();
 	//wxSize parentSize = parent->GetSize();
@@ -753,7 +763,13 @@ STextButton::STextButton(wxWindow *parent, wxWindowID id,
 	//ctrlPos.x += parentSize.x * 0.8;
 	//wxSize ctrlSize = parentSize;
 	//ctrlSize.x = parentSize.x * 0.2;
-	m_button = new wxButton(parent, id, name/*, ctrlPos, ctrlSize*/);
+
+	wxSizer* sz = new wxBoxSizer(wxHORIZONTAL);
+	m_textCtrl = new wxTextCtrl(this, wxID_ANY, wxT(""));
+	m_button = new wxButton(this, wxID_ANY, wxS("..."),wxDefaultPosition,wxDefaultSize,wxWANTS_CHARS); //(wxButton*)GenerateEditorButton(pos, size);
+	//sz->Add(m_textCtrl, 1, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL );
+	//sz->Add(m_button,  0, wxGROW|wxALIGN_CENTER_VERTICAL|wxALL);
+	SetSizer(sz); 
 }
 
 void STextButton::OnPaint(wxPaintEvent &event)
@@ -774,7 +790,7 @@ void STextButton::OnPaint(wxPaintEvent &event)
 
 void STextButton::OnSize(wxSizeEvent& event)
 {
-	wxSize ctrlSize = GetSize();
+	/*wxSize ctrlSize = GetSize();
 
 	wxSize textSize( ctrlSize.x - m_button->GetSize().x - 2, ctrlSize.y);
 	SetSize(textSize);
@@ -783,8 +799,23 @@ void STextButton::OnSize(wxSizeEvent& event)
 	btnPos.x = btnPos.x + textSize.x + 2;
 	m_button->SetPosition(btnPos);
 	ctrlSize.x = m_button->GetSize().x;
-	m_button->SetSize(ctrlSize);
+	m_button->SetSize(ctrlSize);*/
+	wxSize ctrlSize = event.GetSize();
+	//wxSize oldSize = m_button->GetBestSize();
+	wxSize btnSize( ctrlSize.GetHeight()-2, ctrlSize.GetHeight()-2);
+	m_button->SetSize(btnSize);
 
+	wxPoint btnPos = GetPosition();
+	btnPos.x = btnPos.x + ctrlSize.x - btnSize.x - 1;
+	btnPos.y -= 1;
+	m_button->Move(btnPos);
+
+	wxSize textCtrlSize(ctrlSize.x - btnSize.x, btnSize.y);
+	m_textCtrl->SetSize(textCtrlSize);
+	/*ctrlSize.x = m_button->GetSize().x;
+	m_button->SetSize(ctrlSize);*/
+
+	Layout();
 	event.Skip();
 }
 void CGridCellTextButtonRenderer::Draw(wxGrid& grid, wxGridCellAttr& attr, wxDC& dc,

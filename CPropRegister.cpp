@@ -1,5 +1,6 @@
 #include "CMainPropGrid.h"
 #include "./logic/skill/CSkillTemplate.h"
+#include "CPropCtrl.h"
 
 using namespace SKILLEDITOR;
 static const wxChar* severities[] =
@@ -41,7 +42,7 @@ bool CMainPropCtrl::registerSkillProp()
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["ID"]);
 	m_skillItemWindow["SkillID"] = new wxIntProperty(skillNameMap["SkillID"], wxPG_LABEL, 0);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["SkillID"]);
-	m_skillItemWindow["SkillName"] = new wxIntProperty(skillNameMap["SkillName"], wxPG_LABEL, 0);
+	m_skillItemWindow["SkillName"] = new wxStringProperty(skillNameMap["SkillName"], wxPG_LABEL);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["SkillName"]);
 	m_skillItemWindow["SkillIcon"] = new wxIntProperty(skillNameMap["SkillIcon"], wxPG_LABEL, 0);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["SkillIcon"]);
@@ -62,9 +63,9 @@ bool CMainPropCtrl::registerSkillProp()
 	m_skillItemWindow["ScenarioType"] = new wxEnumProperty(skillNameMap["ScenarioType"], wxPG_LABEL,
 		ScenarioTypeArrLabels, ScenarioTypeArrValues, ESkillScenarioType_Ignore);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["ScenarioType"]);
-	m_skillItemWindow["SeqAfterLearn"] = new wxIntProperty(skillNameMap["SeqAfterLearn"], wxPG_LABEL, 0);
+	m_skillItemWindow["SeqAfterLearn"] = new CModifierProperty(skillNameMap["SeqAfterLearn"], wxPG_LABEL);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["SeqAfterLearn"]);
-	m_skillItemWindow["SeqAfterEquip"] = new wxIntProperty(skillNameMap["SeqAfterEquip"], wxPG_LABEL, 0);
+	m_skillItemWindow["SeqAfterEquip"] = new CModifierProperty(skillNameMap["SeqAfterEquip"], wxPG_LABEL);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["SeqAfterEquip"]);
 	m_skillItemWindow["LoopFx"] = new wxIntProperty(skillNameMap["LoopFx"], wxPG_LABEL, 0);
 	m_propGridPages[ECreateItemType_Skill]->Append(m_skillItemWindow["LoopFx"]);

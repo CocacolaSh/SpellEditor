@@ -44,13 +44,13 @@ void CMainPropCtrl::OnSize(wxSizeEvent& event)
 void CMainPropCtrl::finalizePanel( bool wasCreated )
 {
 	// Button for tab traversal testing
-	m_topSizer->Add(m_pPropManager,  1, wxEXPAND);
+	m_topSizer->Add(m_pPropManager,  3, wxEXPAND);
 
 	wxBoxSizer* vSizer = new wxBoxSizer (wxVERTICAL );
-	vSizer->Add(new wxButton(this, wxID_ANY, wxT("ÃèÊö"), wxDefaultPosition, wxSize(300, 30), wxALIGN_LEFT), 0, wxEXPAND);
+	//vSizer->Add(new wxButton(this, wxID_ANY, wxT("ÃèÊö"), wxDefaultPosition, wxd, wxALIGN_LEFT), 0, wxEXPAND);
 	vSizer->Add(m_propItemDesc, 1, wxALIGN_BOTTOM | wxEXPAND | wxALL);
 
-	m_topSizer->Add( vSizer );
+	m_topSizer->Add( vSizer, 1, wxEXPAND );
 
 	SetSizer(m_topSizer);
 	m_topSizer->SetSizeHints(this);

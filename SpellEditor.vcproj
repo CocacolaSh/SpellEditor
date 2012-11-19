@@ -203,6 +203,22 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CModifierSeqListView.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CModifierSeqListView.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CPropCtrl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CPropCtrl.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CPropRegister.cpp"
 				>
 			</File>
