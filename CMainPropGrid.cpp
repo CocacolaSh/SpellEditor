@@ -21,10 +21,15 @@ CMainPropCtrl::CMainPropCtrl(wxWindow *parent, const wxWindowID id,
 		wxTAB_TRAVERSAL);*/
 
 	m_propItemDesc = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_RICH2 | wxTE_MULTILINE);
-	wxBoxSizer* topSizer = new wxBoxSizer ( wxHORIZONTAL );
-	m_topSizer = topSizer;
+	m_topSizer = new wxBoxSizer ( wxHORIZONTAL );
+	
 }
-
+CMainPropCtrl::~CMainPropCtrl()
+{
+	wxDELETE(m_propItemDesc);
+	//wxDELETE(m_topSizer);
+	wxDELETE(m_pPropManager);
+}
 void CMainPropCtrl::OnPropertyGridColBeginDrag( wxPropertyGridEvent& event )
 {
 	//
@@ -39,6 +44,7 @@ void CMainPropCtrl::OnPropertyGridColEndDrag( wxPropertyGridEvent& event )
 }
 void CMainPropCtrl::OnSize(wxSizeEvent& event)
 {
+	m_pPropManager->SetSplitterPosition(event.GetSize().GetWidth() *4 / 8, 0);
 	event.Skip();
 }
 void CMainPropCtrl::finalizePanel( bool wasCreated )
@@ -69,7 +75,7 @@ void CMainPropCtrl::finalizePanel( bool wasCreated )
 }
 bool CMainPropCtrl::createPropGrid()
 {
-	int style = wxPG_BOLD_MODIFIED | wxPG_SPLITTER_AUTO_CENTER /*| wxPG_AUTO_SORT |
+	int style = wxPG_BOLD_MODIFIED | wxPG_SPLITTER_AUTO_CENTER |wxPG_NO_INTERNAL_BORDER/*| wxPG_AUTO_SORT |
 		wxPG_TOOLBAR | wxPG_DESCRIPTION*/;
 	m_pPropManager = new wxPropertyGridManager(this,
 							PGID, 
@@ -86,14 +92,15 @@ bool CMainPropCtrl::createPropGrid()
 	m_pPropManager->SetColumnTitle(1, wxT("ֵ"));
 	m_pPropGrid = m_pPropManager->GetGrid();
 	//m_pPropGrid->SetVerticalSpacing( 2 );
-	m_pPropManager->ShowHeader(true);
+	//m_pPropManager->ShowHeader(true);
 
 	
 
 	registerSkillProp();
 	//_appendSkillProp();
-	wxPropertyGridEvent MyEvent(wxEVT_PG_COL_END_DRAG, m_pPropManager->GetId()); 
-	GetEventHandler()->ProcessEvent(MyEvent);
+	wxPropertyGridEvent MyEvent(wxEVT_PG_COL_DRAGGING, m_pPropManager->GetId()); 
+	m_pPropManager->GetEventHandler()->ProcessEvent(MyEvent);
+	
 	//AddPendingEvent(MyEvent);
 	finalizePanel();
 

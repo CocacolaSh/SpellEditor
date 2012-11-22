@@ -1,6 +1,6 @@
 
 #include "CModifierSeqListView.h"
-#include "CCustomGridCellCtrl.h"
+#include "CModifierEditor.h"
 
 BEGIN_EVENT_TABLE(CModifierSeqListView, wxGrid)
 	EVT_SIZE(		CModifierSeqListView::OnSize)
@@ -33,7 +33,7 @@ void CModifierSeqListView::initWithReportItems()
 	wxGridCellAttr *pAttr = new wxGridCellAttr;
 	
 	pAttr->SetEditor(new CTextButtonEditor(wxT("±à¼­")));
-	pAttr->SetRenderer(new wxGridCellStringRenderer);
+	//pAttr->SetRenderer(new CGridCellTextButtonRenderer);
 	SetColAttr(0, pAttr);
 
 	wxGridSizesInfo info;
@@ -45,10 +45,12 @@ void CModifierSeqListView::initWithReportItems()
 void CModifierSeqListView::OnSize(wxSizeEvent& event)
 {
 	BSLib::s32 wc = event.GetSize().GetWidth();
-	SetColSize(0, wc * 0.25);
-	SetColSize(1, wc * 0.25);
-	SetColSize(2, wc * 0.25);
-	SetColSize(3, wc * 0.25);
+	BSLib::s32 colSize = wc * 0.25;
+	SetColSize(0, colSize);
+	SetColSize(1, colSize);
+	SetColSize(2, colSize);
+	SetColSize(3, colSize);
+	DisableCellEditControl();
 	event.Skip();
 }
 void CModifierSeqListView::OnCellLeftClick(wxGridEvent& ev)

@@ -203,6 +203,22 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CModifierEditor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CModifierEditor.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CModifierSelectDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CModifierSelectDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CModifierSeqListView.cpp"
 				>
 			</File>

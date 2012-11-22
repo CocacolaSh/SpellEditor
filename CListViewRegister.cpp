@@ -1,5 +1,6 @@
 #include "CListView.h"
 #include "CCustomGridCellCtrl.h"
+#include "CModifierEditor.h"
 
 static const wxString severities[] =
 {

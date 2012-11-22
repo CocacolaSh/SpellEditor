@@ -38,6 +38,7 @@ public:
 	CMainPropCtrl(wxWindow *parent, const wxWindowID id,
 		const wxPoint& pos, const wxSize& size,
 		long style);
+	virtual ~CMainPropCtrl();
 	bool createPropGrid();
 	bool init();
 
